@@ -20,7 +20,21 @@ public class TestSquare {
 		s.setBomb();
 		boolean isBomb = s.getIsBomb();
 		assertEquals(true, isBomb);
-		
+	}
+	
+	
+	@Test
+	public void testValorCasellaNum() {
+		MockBoard board = new MockBoard();
+		Square testedSquare = new Square();
+		Square[][] squares;
+		Square bomb = new Square();
+		bomb.setBomb();
+		Square normalSquare = new Square();
+		squares = new Square[][] {{bomb, normalSquare, normalSquare}, {bomb, testedSquare, bomb}, {normalSquare, normalSquare, normalSquare}};
+		board.addBoard(squares);
+		testedSquare.open();
+		assertEquals(3, testedSquare.getValue());
 	}
 	
 }
