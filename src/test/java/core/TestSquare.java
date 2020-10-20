@@ -14,5 +14,13 @@ public class TestSquare {
 		assertEquals(true, isOpen);
 	}
 	
+	@Test
+	public void testBomba() {
+		Square s = new Square();
+		s.setBomb();
+		boolean isBomb = s.getIsBomb();
+		assertEquals(true, isBomb);
+		
+	}
 	
 }
