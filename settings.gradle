@@ -7,4 +7,8 @@
  * in the user manual at https://docs.gradle.org/6.3/userguide/multi_project_builds.html
  */
 
+<<<<<<< HEAD
 rootProject.name = 'SesionProblemasDos'
+=======
+rootProject.name = 'Practiques'
+>>>>>>> 95bb464df71cfb32b051afe46b7c156ffae8448b

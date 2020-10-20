@@ -1,3 +1,4 @@
 language: java
 jdk:
-- oraclejdk11
+ - oraclejdk11
+>>>>>>> 95bb464df71cfb32b051afe46b7c156ffae8448b
