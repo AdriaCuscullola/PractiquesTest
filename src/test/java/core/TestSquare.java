@@ -20,6 +20,7 @@ public class TestSquare {
 		s.setBomb();
 		boolean isBomb = s.getIsBomb();
 		assertEquals(true, isBomb);
+		assertEquals(-1, s.getValue());
 	}
 	
 	@Test
@@ -34,7 +35,8 @@ public class TestSquare {
 	public void testValorCasellaNum() {
 		MockBoard board = new MockBoard();
 		Square testedSquare = new Square();
-		testedSquare.addBoard(board);
+		testedSquare.setBoard(board);
+		testedSquare.addBoardPosition(1, 1);
 		Square[][] squares;
 		Square bomb = new Square();
 		bomb.setBomb();
