@@ -22,6 +22,13 @@ public class TestSquare {
 		assertEquals(true, isBomb);
 	}
 	
+	@Test
+	public void testGetSquarePosition() {
+		Square square = new Square();
+		square.addBoardPosition(1, 1);
+		assertEquals(1, square.getXPosition());
+		assertEquals(1, square.getYPosition());
+	}
 	
 	@Test
 	public void testValorCasellaNum() {

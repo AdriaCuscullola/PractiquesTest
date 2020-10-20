@@ -3,7 +3,7 @@ package core;
 public class Square {
 	private boolean isOpen = false;
 	private boolean isBomb = false;
-	
+	private Board board;
 	
 	public void open() {
 		isOpen = true;
