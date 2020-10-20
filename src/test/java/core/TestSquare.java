@@ -27,6 +27,7 @@ public class TestSquare {
 	public void testValorCasellaNum() {
 		MockBoard board = new MockBoard();
 		Square testedSquare = new Square();
+		testedSquare.addBoard(board);
 		Square[][] squares;
 		Square bomb = new Square();
 		bomb.setBomb();
