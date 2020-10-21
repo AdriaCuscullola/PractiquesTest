@@ -9,9 +9,26 @@ public class Square {
 	private Board board;
 	
 	public void open() {
-		isOpen = true;
-		if(!isBomb && board != null) {
-			value = calcNearBombs();
+		if(!isOpen) {
+			isOpen = true;
+			if(!isBomb && board != null) {
+				value = calcNearBombs();
+				if(value == 0) {
+					openAdjacents();
+				}
+			}
+		}
+	}
+	
+	private void openAdjacents() {
+		int minRowPosicion = row-1>=0 ? row-1 : 0;
+		int maxRowPosicion = row+1<board.getRows() ? row+1 : board.getRows()-1;
+		int minColPosicion = column-1>=0 ? column-1 : 0;
+		int maxColPosicion = column+1<board.getCol() ? column+1 : board.getCol()-1;
+		for(int i = minRowPosicion; i<=maxRowPosicion; i++) {
+			for(int j = minColPosicion; j<=maxColPosicion; j++) {
+				board.openSquare(i, j);
+			}
 		}
 	}
 	
@@ -30,6 +47,7 @@ public class Square {
 		}
 		return newValue;
 	}
+	
 	
 	public boolean getIsOpen() {
 		return isOpen;

@@ -130,6 +130,7 @@ public class TestSquare {
 				Square newSquare = new Square();
 				newSquare.addBoardPosition(i, j);
 				squares[i][j] = newSquare;
+				newSquare.setBoard(board);
 			}
 		}
 		squares[2][2].setBomb();
@@ -140,6 +141,8 @@ public class TestSquare {
 				Square square = board.getSquare(i, j);
 				if(i != 2 && j != 2) {
 					assertTrue(square.getIsOpen());
+				} else if (i == 2 && j == 2){
+					assertFalse(square.getIsOpen());
 				}
 			}
 		}
