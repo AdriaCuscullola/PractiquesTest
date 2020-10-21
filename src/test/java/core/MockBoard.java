@@ -17,4 +17,22 @@ public class MockBoard implements Board {
 	public Square getSquare(int i, int j) {
 		return board[i][j];
 	}
+
+	@Override
+	public int getRows() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int getCols() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int getNBombs() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 }

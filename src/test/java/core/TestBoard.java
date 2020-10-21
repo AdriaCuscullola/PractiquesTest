@@ -5,10 +5,18 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 public class TestBoard {
-
+		
 	@Test
-	public void test() {
-		fail("Not yet implemented");
+	public void testInitialize() {
+		Board b = new BoardR(5, 6, 10);
+		int nbombs = b.getNBombs();
+		int rows = b.getRows();
+		int cols = b.getCols();
+		
+		assertEquals(10, nbombs);
+		assertEquals(5, rows);
+		assertEquals(6, cols);
 	}
-
+	
+	
 }
