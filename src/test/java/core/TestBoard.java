@@ -18,5 +18,13 @@ public class TestBoard {
 		assertEquals(6, cols);
 	}
 	
-	
+	public void testOpen() {
+		Board b = new BoardR(5, 6, 10);
+		
+		b.openSquare(5, 3);
+		boolean initialized = b.getInicialized();
+		
+		assertEquals(true, initialized);	
+		
+	}	
 }

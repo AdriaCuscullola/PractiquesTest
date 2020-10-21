@@ -10,6 +10,7 @@ public class BoardR implements Board{
 		this.cols = cols;
 		this.nBombs = nBombs;
 	}
+	
 	public int getRows() {
 		return rows;
 	}
