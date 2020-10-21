@@ -34,6 +34,8 @@ public class TestSquare {
 	@Test
 	public void testValorCasellaNum() {
 		MockBoard board = new MockBoard();
+		board.col = 3;
+		board.rows = 3;
 		Square testedSquare = new Square();
 		testedSquare.setBoard(board);
 		testedSquare.addBoardPosition(1, 1);
@@ -51,6 +53,8 @@ public class TestSquare {
 	@Test
 	public void testValorCasellaNumSenseBombes() {
 		MockBoard board = new MockBoard();
+		board.col = 3;
+		board.rows = 3;
 		Square testedSquare = new Square();
 		testedSquare.setBoard(board);
 		testedSquare.addBoardPosition(1, 1);
@@ -65,6 +69,8 @@ public class TestSquare {
 	@Test
 	public void testValorCasellaNumNomesBomes() {
 		MockBoard board = new MockBoard();
+		board.col = 3;
+		board.rows = 3;
 		Square testedSquare = new Square();
 		testedSquare.setBoard(board);
 		testedSquare.addBoardPosition(1, 1);
@@ -80,6 +86,8 @@ public class TestSquare {
 	@Test
 	public void testValorCasellaNumEnUnCostat() {
 		MockBoard board = new MockBoard();
+		board.col = 3;
+		board.rows = 3;
 		Square testedSquare = new Square();
 		testedSquare.setBoard(board);
 		testedSquare.addBoardPosition(0, 1);

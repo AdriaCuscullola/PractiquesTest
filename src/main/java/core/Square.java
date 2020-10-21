@@ -11,14 +11,24 @@ public class Square {
 	public void open() {
 		isOpen = true;
 		if(!isBomb && board != null) {
-			for(int i = -1; i<2; i++) {
-				for(int j = -1; j<2; j++) {
-					if(board.getSquare(row-i, column-j).isBomb) {
-						value++;
-					}
+			value = calcNearBombs();
+		}
+	}
+	
+	private int calcNearBombs() {
+		int newValue = 0;
+		int minRowPosicion = row-1>=0 ? row-1 : 0;
+		int maxRowPosicion = row+1<board.getRows() ? row+1 : board.getRows()-1;
+		int minColPosicion = column-1>=0 ? column-1 : 0;
+		int maxColPosicion = column+1<board.getCol() ? column+1 : board.getCol()-1;
+		for(int i = minRowPosicion; i<=maxRowPosicion; i++) {
+			for(int j = minColPosicion; j<=maxColPosicion; j++) {
+				if(board.getSquare(i, j).isBomb) {
+					newValue++;
 				}
 			}
 		}
+		return newValue;
 	}
 	
 	public boolean getIsOpen() {
