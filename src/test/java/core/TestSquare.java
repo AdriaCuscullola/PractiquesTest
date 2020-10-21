@@ -47,4 +47,34 @@ public class TestSquare {
 		assertEquals(3, testedSquare.getValue());
 	}
 	
+	
+	@Test
+	public void testValorCasellaNumSenseBombes() {
+		MockBoard board = new MockBoard();
+		Square testedSquare = new Square();
+		testedSquare.setBoard(board);
+		testedSquare.addBoardPosition(1, 1);
+		Square[][] squares;
+		Square normalSquare = new Square();
+		squares = new Square[][] {{normalSquare, normalSquare, normalSquare}, {normalSquare, testedSquare, normalSquare}, {normalSquare, normalSquare, normalSquare}};
+		board.addBoard(squares);
+		testedSquare.open();
+		assertEquals(0, testedSquare.getValue());
+	}
+	
+	@Test
+	public void testValorCasellaNumNomesBomes() {
+		MockBoard board = new MockBoard();
+		Square testedSquare = new Square();
+		testedSquare.setBoard(board);
+		testedSquare.addBoardPosition(1, 1);
+		Square[][] squares;
+		Square bomb = new Square();
+		bomb.setBomb();
+		squares = new Square[][] {{bomb, bomb, bomb}, {bomb, testedSquare, bomb}, {bomb, bomb, bomb}};
+		board.addBoard(squares);
+		testedSquare.open();
+		assertEquals(8, testedSquare.getValue());
+	}
+	
 }
