@@ -27,8 +27,8 @@ public class TestSquare {
 	public void testGetSquarePosition() {
 		Square square = new Square();
 		square.addBoardPosition(1, 1);
-		assertEquals(1, square.getXPosition());
-		assertEquals(1, square.getYPosition());
+		assertEquals(1, square.getRow());
+		assertEquals(1, square.getColumn());
 	}
 	
 	@Test
@@ -75,6 +75,22 @@ public class TestSquare {
 		board.addBoard(squares);
 		testedSquare.open();
 		assertEquals(8, testedSquare.getValue());
+	}
+	
+	@Test
+	public void testValorCasellaNumEnUnCostat() {
+		MockBoard board = new MockBoard();
+		Square testedSquare = new Square();
+		testedSquare.setBoard(board);
+		testedSquare.addBoardPosition(0, 1);
+		Square[][] squares;
+		Square bomb = new Square();
+		bomb.setBomb();
+		Square normalSquare = new Square();
+		squares = new Square[][] {{bomb, testedSquare, normalSquare}, {bomb, normalSquare, normalSquare}, {normalSquare, normalSquare, normalSquare}};
+		board.addBoard(squares);
+		testedSquare.open();
+		assertEquals(2, testedSquare.getValue());
 	}
 	
 }

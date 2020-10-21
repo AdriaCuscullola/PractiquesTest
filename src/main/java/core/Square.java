@@ -4,8 +4,8 @@ public class Square {
 	private boolean isOpen = false;
 	private boolean isBomb = false;
 	private int value = 0;
-	private int xPosition;
-	private int yPosition;
+	private int row;
+	private int column;
 	private Board board;
 	
 	public void open() {
@@ -13,7 +13,7 @@ public class Square {
 		if(!isBomb && board != null) {
 			for(int i = -1; i<2; i++) {
 				for(int j = -1; j<2; j++) {
-					if(board.getSquare(xPosition-i, yPosition-j).isBomb) {
+					if(board.getSquare(row-i, column-j).isBomb) {
 						value++;
 					}
 				}
@@ -38,17 +38,17 @@ public class Square {
 		board = newBoard;
 	}
 	
-	public void addBoardPosition(int x, int y) {
-		this.xPosition = x;
-		this.yPosition = y;
+	public void addBoardPosition(int row, int column) {
+		this.row = row;
+		this.column = column;
 	}
 	
-	public int getXPosition() {
-		return xPosition;
+	public int getRow() {
+		return row;
 	}
 
-	public int getYPosition() {
-		return yPosition;
+	public int getColumn() {
+		return column;
 	}
 	
 	public int getValue() {
