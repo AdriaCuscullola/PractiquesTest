@@ -26,7 +26,6 @@ public class MockBoard implements Board {
 
 	@Override
 	public int getCol() {
-		// TODO Auto-generated method stub
 		return col;
 	}
 }
