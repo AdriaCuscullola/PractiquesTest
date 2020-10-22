@@ -4,22 +4,50 @@ public class Square {
 	private boolean isOpen = false;
 	private boolean isBomb = false;
 	private int value = 0;
-	private int xPosition;
-	private int yPosition;
+	private int row;
+	private int column;
 	private Board board;
 	
 	public void open() {
-		isOpen = true;
-		if(!isBomb && board != null) {
-			for(int i = -1; i<2; i++) {
-				for(int j = -1; j<2; j++) {
-					if(board.getSquare(xPosition-i, yPosition-j).isBomb) {
-						value++;
-					}
+		if(!isOpen) {
+			isOpen = true;
+			if(!isBomb && board != null) {
+				value = calcNearBombs();
+				if(value == 0) {
+					openAdjacents();
 				}
 			}
 		}
 	}
+	
+	private void openAdjacents() {
+		int minRowPosicion = row-1>=0 ? row-1 : 0;
+		int maxRowPosicion = row+1<board.getRows() ? row+1 : board.getRows()-1;
+		int minColPosicion = column-1>=0 ? column-1 : 0;
+		int maxColPosicion = column+1<board.getCols() ? column+1 : board.getCols()-1;
+		for(int i = minRowPosicion; i<=maxRowPosicion; i++) {
+			for(int j = minColPosicion; j<=maxColPosicion; j++) {
+				board.openSquare(i, j);
+			}
+		}
+	}
+	
+	private int calcNearBombs() {
+		int newValue = 0;
+		int minRowPosicion = row-1>=0 ? row-1 : 0;
+		int maxRowPosicion = row+1<board.getRows() ? row+1 : board.getRows()-1;
+		int minColPosicion = column-1>=0 ? column-1 : 0;
+		int maxColPosicion = column+1<board.getCols() ? column+1 : board.getCols()-1;
+		for(int i = minRowPosicion; i<=maxRowPosicion; i++) {
+			for(int j = minColPosicion; j<=maxColPosicion; j++) {
+				if(board.getSquare(i, j).isBomb) {
+					newValue++;
+				}
+			}
+		}
+		return newValue;
+	}
+	
 	
 	public boolean getIsOpen() {
 		return isOpen;
@@ -38,17 +66,17 @@ public class Square {
 		board = newBoard;
 	}
 	
-	public void addBoardPosition(int x, int y) {
-		this.xPosition = x;
-		this.yPosition = y;
+	public void addBoardPosition(int row, int column) {
+		this.row = row;
+		this.column = column;
 	}
 	
-	public int getXPosition() {
-		return xPosition;
+	public int getRow() {
+		return row;
 	}
 
-	public int getYPosition() {
-		return yPosition;
+	public int getColumn() {
+		return column;
 	}
 	
 	public int getValue() {

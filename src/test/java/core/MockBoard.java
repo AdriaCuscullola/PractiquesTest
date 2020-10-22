@@ -2,6 +2,8 @@ package core;
 
 public class MockBoard implements Board {
 	private Square[][] board;
+	public int rows;
+	public int col;
 	
 	public void addBoard(Square[][] board) {
 		this.board = board;
@@ -10,7 +12,6 @@ public class MockBoard implements Board {
 	@Override
 	public void openSquare(int i, int j) {
 		board[i][j].open();
-		
 	}
 
 	@Override
@@ -21,13 +22,7 @@ public class MockBoard implements Board {
 	@Override
 	public int getRows() {
 		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public int getCols() {
-		// TODO Auto-generated method stub
-		return 0;
+		return rows;
 	}
 
 	@Override
@@ -40,5 +35,10 @@ public class MockBoard implements Board {
 	public boolean getInitialized() {
 		// TODO Auto-generated method stub
 		return false;
+	}
+
+	@Override
+	public int getCols() {
+		return col;
 	}
 }
