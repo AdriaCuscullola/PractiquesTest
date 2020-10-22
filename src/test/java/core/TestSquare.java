@@ -30,6 +30,40 @@ public class TestSquare {
 		assertEquals(1, square.getRow());
 		assertEquals(1, square.getColumn());
 	}
+	/*
+	 * Tests de Board de 1x1
+	 */
+	
+	@Test
+	public void testOpenSquareEnUnBoardDeUnaSquare() {
+		/*
+		 * Es genera un board 1x1 i es mira de obrir la casella que hi ha
+		 */
+		MockBoard board = new MockBoard();
+		board.col = 1;
+		board.rows = 1;
+		Square[][] squares = createBoard(board, 1, 1);
+		board.addBoard(squares);
+		board.openSquare(0, 0);
+		assertEquals(0, board.getSquare(0, 0).getValue());
+		assertTrue(board.getSquare(0, 0).getIsOpen());
+	}
+	
+	@Test
+	public void testOpenBombEnUnBoardDeUnaSquare() {
+		/*
+		 * Es genera un board 1x1 i es mira de obrir la bomba que hi ha
+		 */
+		MockBoard board = new MockBoard();
+		board.col = 1;
+		board.rows = 1;
+		Square[][] squares = createBoard(board, 1, 1);
+		squares[0][0].setBomb();
+		board.addBoard(squares);
+		board.openSquare(0, 0);
+		assertEquals(-1, board.getSquare(0, 0).getValue());
+		assertTrue(board.getSquare(0, 0).getIsOpen());
+	}
 	
 	/*
 	 * Testos que comproven que el valor que te una casella (num de mines aprop) és el correcte
@@ -77,7 +111,7 @@ public class TestSquare {
 	}
 	
 	@Test
-	public void testValorCasellaNumNomesBomes() {
+	public void testValorCasellaNumNomesBombes() {
 		/*
 		 * Generem un Board 3x3 i posem la casella de test al mig, aquesta te un total de 8 mines al costat. Cas frontera
 		 */
@@ -139,7 +173,7 @@ public class TestSquare {
 	}
 	
 	/*
-	 * Conjunt de testos que comproven que si obres una casella buida (valor = 0), s'obrin les del costat també
+	 * Conjunt de testos que comproven que si obres una casella buida (valor = 0), s'obrin les del costat també.
 	 */
 	
 	private Square[][] createBoard(Board board, int rows, int columns) {
