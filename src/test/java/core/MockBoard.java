@@ -35,4 +35,10 @@ public class MockBoard implements Board {
 		// TODO Auto-generated method stub
 		return 0;
 	}
+
+	@Override
+	public boolean getInitialized() {
+		// TODO Auto-generated method stub
+		return false;
+	}
 }

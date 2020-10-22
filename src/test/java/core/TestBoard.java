@@ -22,7 +22,7 @@ public class TestBoard {
 		Board b = new BoardR(5, 6, 10);
 		
 		b.openSquare(5, 3);
-		boolean initialized = b.getInicialized();
+		boolean initialized = b.getInitialized();
 		
 		assertEquals(true, initialized);	
 		

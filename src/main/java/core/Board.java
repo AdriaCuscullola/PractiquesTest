@@ -7,7 +7,7 @@ public interface Board {
 	public int getRows();
 	public int getCols();
 	public int getNBombs();
-	
+	public boolean getInitialized();
 	
 	
 	
