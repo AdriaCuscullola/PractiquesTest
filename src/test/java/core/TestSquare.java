@@ -278,5 +278,7 @@ public class TestSquare {
 	public void testSetBandera() {
 		Square square = new Square();
 		assertFalse(square.isFlagged());
+		square.changeIsFlagged();
+		assertTrue(square.isFlagged());
 	}
 }
