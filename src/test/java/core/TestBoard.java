@@ -7,7 +7,7 @@ import org.junit.Test;
 public class TestBoard {
 		
 	@Test
-	public void testInitialize() {
+	public void testInitialize() { //comprova que les dades d'entrada s'inicialitzin.
 		Board b = new BoardR(5, 6, 10);
 		int nbombs = b.getNBombs();
 		int rows = b.getRows();
@@ -19,7 +19,7 @@ public class TestBoard {
 	}
 	
 	@Test
-	public void testOpen() {
+	public void testOpen() { //comprova el boolea de l'initialized.
 		Board b = new BoardR(5, 6, 10);
 		
 		b.openSquare(4, 3);
@@ -80,7 +80,7 @@ public class TestBoard {
 	}
 	
 	@Test
-	public void testInitializedLimitUpperBombes() { //comprovació valor limit 0 bombes.
+	public void testInitializedLimitUpperBombes() { //comprovació valor limit ficant més bombes de les possibles.
 		Board b = new BoardR(5, 6, 30);
 		
 		b.openSquare(4, 3);
