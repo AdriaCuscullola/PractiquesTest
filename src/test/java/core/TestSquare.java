@@ -291,4 +291,13 @@ public class TestSquare {
 		square.open();
 		assertFalse(square.getIsOpen());
 	}
+	
+	@Test
+	public void testOpenFlaggedBomb() {
+		Square square = new Square();
+		square.setBomb();
+		square.changeIsFlagged();
+		square.open();
+		assertFalse(square.getIsOpen());
+	}
 }
