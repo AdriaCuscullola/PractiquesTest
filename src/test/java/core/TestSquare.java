@@ -269,4 +269,35 @@ public class TestSquare {
 			}
 		}
 	}
+	
+	/*
+	 * Testos que comproven el mètode de afegir banderes
+	 */
+	
+	@Test
+	public void testSetBandera() {
+		Square square = new Square();
+		assertFalse(square.isFlagged());
+		square.changeIsFlagged();
+		assertTrue(square.isFlagged());
+		square.changeIsFlagged();
+		assertFalse(square.isFlagged());
+	}
+	
+	@Test
+	public void testOpenFlaggedSquare() {
+		Square square = new Square();
+		square.changeIsFlagged();
+		square.open();
+		assertFalse(square.getIsOpen());
+	}
+	
+	@Test
+	public void testOpenFlaggedBomb() {
+		Square square = new Square();
+		square.setBomb();
+		square.changeIsFlagged();
+		square.open();
+		assertFalse(square.getIsOpen());
+	}
 }

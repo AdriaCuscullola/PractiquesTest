@@ -7,8 +7,12 @@ public class Square {
 	private int row;
 	private int column;
 	private Board board;
+	private boolean isFlagged;
 	
 	public void open() {
+		if(isFlagged) {
+			return;
+		}
 		if(!isOpen) {
 			isOpen = true;
 			if(!isBomb && board != null) {
@@ -88,5 +92,12 @@ public class Square {
 		return this.value;
 	}
 	
+	public boolean isFlagged() {
+		return isFlagged;
+	}
+	
+	public void changeIsFlagged() {
+		isFlagged = !isFlagged;
+	}
 	
 }
