@@ -9,6 +9,8 @@ public class Square {
 	private Board board;
 	private boolean isFlagged;
 	
+	
+	
 	public void open() {
 		if(isFlagged) {
 			return;
