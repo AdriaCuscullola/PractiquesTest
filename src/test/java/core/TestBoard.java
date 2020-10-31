@@ -12,7 +12,10 @@ public class TestBoard {
 		int nbombs = b.getNBombs();
 		int rows = b.getRows();
 		int cols = b.getCols();
+		Square[][] R = b.getBoard();
+		boolean bomb = R[2][3].getIsBomb();
 		
+		assertEquals(false, bomb);
 		assertEquals(10, nbombs);
 		assertEquals(5, rows);
 		assertEquals(6, cols);
