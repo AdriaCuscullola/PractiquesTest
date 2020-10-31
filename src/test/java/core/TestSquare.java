@@ -276,6 +276,9 @@ public class TestSquare {
 	
 	@Test
 	public void testSetBandera() {
+		/*
+		 * Test que comprova si al afegir una bandera o al treure-la canvia el seu estat
+		 */
 		Square square = new Square();
 		assertFalse(square.isFlagged());
 		square.changeIsFlagged();
@@ -284,8 +287,12 @@ public class TestSquare {
 		assertFalse(square.isFlagged());
 	}
 	
+	
 	@Test
 	public void testOpenFlaggedSquare() {
+		/*
+		 * Test que comprova que una cel·la no s'obri al tenir una bandera
+		 */
 		Square square = new Square();
 		square.changeIsFlagged();
 		square.open();
@@ -294,6 +301,9 @@ public class TestSquare {
 	
 	@Test
 	public void testOpenFlaggedBomb() {
+		/*
+		 * Test que comprova que una cel·la bomba no s'obri al tenir una bandera
+		 */
 		Square square = new Square();
 		square.setBomb();
 		square.changeIsFlagged();
@@ -303,6 +313,10 @@ public class TestSquare {
 	
 	@Test
 	public void testOpenEmptySquareInBoardWithFlag() {
+		/*
+		 * Generem un board 3x3 i a la casella inferior dreta afegim una bomba. Afegim una bandera a la cel·la del centre i obrim la de l'esquerra superior.
+		 * S'han de obrir totes menys la bomba i la de la bandera
+		 */
 		MockBoard board = new MockBoard();
 		board.col = 3;
 		board.rows = 3;
@@ -327,6 +341,10 @@ public class TestSquare {
 	
 	@Test
 	public void testOpenEmptySquareFlaggedInBoard() {
+		/*
+		 * Generem un board 3x3 i a la casella inferior dreta afegim una bomba. Afegim una bandera a la cel·la de l'esquerra superior i la obrim.
+		 * No s'ha de obrir cap.
+		 */
 		MockBoard board = new MockBoard();
 		board.col = 3;
 		board.rows = 3;
