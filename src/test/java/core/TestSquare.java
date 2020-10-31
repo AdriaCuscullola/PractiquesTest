@@ -280,5 +280,8 @@ public class TestSquare {
 		assertFalse(square.isFlagged());
 		square.changeIsFlagged();
 		assertTrue(square.isFlagged());
+		square.changeIsFlagged();
+		assertFalse(square.isFlagged());
+		
 	}
 }
