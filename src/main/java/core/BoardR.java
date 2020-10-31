@@ -39,6 +39,7 @@ public class BoardR implements Board{
 	}
 	
 	public void initialize(int i, int j) {
+		initialized = true;
 		Random rand = new Random();
 		int maxBombs = (rows*cols)-1;
 		if(nBombs > maxBombs)
@@ -59,8 +60,10 @@ public class BoardR implements Board{
 	}
 	
 	public void openSquare(int i, int j) {//TODO:
-		initialized = true;
-		initialize(i,j);
+		if(!getInitialized()) {
+			initialize(i,j);
+		}
+		
 	}
 	
 	
