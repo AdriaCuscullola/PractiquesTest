@@ -31,7 +31,6 @@ public class TestBoard {
 		Board b = new BoardR(5, 6, 10);
 		
 		b.openSquare(5, 3);
-		boolean initialized = b.getInitialized();
 		Square[][] R = b.getBoard();
 		
 		int bombs = 0;
