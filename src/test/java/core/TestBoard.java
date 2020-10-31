@@ -148,4 +148,29 @@ public class TestBoard {
 		isFlag = R[3][2].isFlagged();
 		assertEquals(false, isFlag);
 	}
+	
+	@Test
+	public void testGetStatus() { //comprova si el getStatus retorna el ENUM indicat.
+		Board b = new BoardR(5, 6, 10);
+		Square[][] R = b.getBoard();
+		
+		b.openSquare(4, 3);
+		SquareStatus real = b.getStatus(4,3);
+		SquareStatus aux = SquareStatus.VALUE;
+		assertEquals(aux, real);
+		
+		SquareStatus real2 = b.getStatus(3,2);
+		SquareStatus aux2 = SquareStatus.NOT_OPEN;
+		assertEquals(aux2, real2);
+		
+		R[3][2].setBomb();
+		SquareStatus real3 = b.getStatus(3,2);
+		SquareStatus aux3 = SquareStatus.BOMB;
+		assertEquals(aux3, real3);
+		
+		R[3][1].changeIsFlagged();
+		SquareStatus real4 = b.getStatus(3,1);
+		SquareStatus aux4 = SquareStatus.FLAGGED;
+		assertEquals(aux4, real4);
+	}
 }

@@ -63,6 +63,7 @@ public class BoardR implements Board{
 		if(!getInitialized()) {
 			initialize(i,j);
 		}
+		//SquareStatus aux = SquareStatus.VALUE;
 	}
 	
 	
