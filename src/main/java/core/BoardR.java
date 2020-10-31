@@ -14,6 +14,12 @@ public class BoardR implements Board{
 		this.rows = rows;
 		this.cols = cols;
 		this.nBombs = nBombs;
+		this.board = new Square[rows][cols];
+		for(int it = 0; it < rows; it++) {
+			for(int jt = 0; jt < cols; jt++) {
+				board[it][jt] = new Square();
+			}
+		}
 	}
 	
 	public int getRows() {
@@ -34,11 +40,19 @@ public class BoardR implements Board{
 	
 	public void initialize(int i, int j) {
 		Random rand = new Random();
+		int maxBombs = (rows*cols)-1;
+		if(nBombs > maxBombs)
+			nBombs = maxBombs;
 		for (int it = 0; it < nBombs; it++) {
 			int row = rand.nextInt(rows);
 			int col = rand.nextInt(cols);
-			if(!board[row][col].setBomb()) {
+			if((row == i) && (col == j)) {
 				it--;
+			}
+			else{
+				if(!board[row][col].setBomb()) {
+					it--;
+				}
 			}
 		}
 		
