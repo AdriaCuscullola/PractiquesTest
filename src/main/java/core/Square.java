@@ -99,7 +99,9 @@ public class Square {
 	}
 	
 	public void changeIsFlagged() {
-		isFlagged = !isFlagged;
+		if(!isOpen) {
+			isFlagged = !isFlagged;
+		}
 	}
 	
 }
