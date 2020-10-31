@@ -296,7 +296,7 @@ public class TestSquare {
 		assertFalse(square.isFlagged());
 		square.open();
 		square.changeIsFlagged();
-		assertFalse(square.getIsOpen());
+		assertFalse(square.isFlagged());
 	}
 	
 	@Test
