@@ -55,4 +55,8 @@ public class BoardR implements Board{
 		Square s = new Square();
 		return s;
 	}
+	
+	public Square[][] getBoard(){
+		return board;
+	}
 }
