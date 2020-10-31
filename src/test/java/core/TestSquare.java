@@ -282,6 +282,13 @@ public class TestSquare {
 		assertTrue(square.isFlagged());
 		square.changeIsFlagged();
 		assertFalse(square.isFlagged());
-		
+	}
+	
+	@Test
+	public void testOpenFlaggedSquare() {
+		Square square = new Square();
+		square.changeIsFlagged();
+		square.open();
+		assertFalse(square.getIsOpen());
 	}
 }
