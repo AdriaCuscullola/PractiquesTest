@@ -8,7 +8,7 @@ public class BoardR implements Board{
 	private int nBombs;
 	private boolean initialized = false;
 	private Square[][] board;
-
+	private int pendingSquares;
 	
 	BoardR(int rows, int cols, int nBombs){
 		this.rows = rows;
@@ -20,6 +20,10 @@ public class BoardR implements Board{
 				board[it][jt] = new Square();
 			}
 		}
+		int maxBombs = (rows*cols)-1;
+		if(nBombs > maxBombs)
+			nBombs = maxBombs;
+		this.pendingSquares = (rows*cols)-nBombs;
 	}
 	
 	public int getRows() {
@@ -41,9 +45,9 @@ public class BoardR implements Board{
 	public void initialize(int i, int j) {
 		initialized = true;
 		Random rand = new Random();
-		int maxBombs = (rows*cols)-1;
+		/*int maxBombs = (rows*cols)-1;
 		if(nBombs > maxBombs)
-			nBombs = maxBombs;
+			nBombs = maxBombs;*/
 		for (int it = 0; it < nBombs; it++) {
 			int row = rand.nextInt(rows);
 			int col = rand.nextInt(cols);
@@ -63,10 +67,19 @@ public class BoardR implements Board{
 		if(!getInitialized()) {
 			initialize(i,j);
 		}
-		//SquareStatus aux = SquareStatus.VALUE;
+		SquareStatus aux = SquareStatus.VALUE;
+		if(getStatus(i,j) == aux)
+			pendingSquares--;
 	}
 	
+	public SquareStatus getStatus(int i, int j) {
+		SquareStatus aux = board[i][j].getStatus();
+		return aux;
+	}
 	
+	public void changeFlag() {
+		
+	}
 	
 	public Square getSquare(int i, int j) { //TODO: getSquareisOpen
 		Square s = new Square();
@@ -75,5 +88,12 @@ public class BoardR implements Board{
 	
 	public Square[][] getBoard(){
 		return board;
+	}
+	
+	public int getPendingSquares() {
+		return pendingSquares;
+	}
+	public void changeFlag(int i, int j) {
+		board[i][j].changeIsFlagged();
 	}
 }

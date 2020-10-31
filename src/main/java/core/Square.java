@@ -103,5 +103,4 @@ public class Square {
 			isFlagged = !isFlagged;
 		}
 	}
-	
 }

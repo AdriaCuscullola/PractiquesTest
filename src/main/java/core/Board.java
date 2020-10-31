@@ -8,4 +8,7 @@ public interface Board {
 	public int getNBombs();
 	public boolean getInitialized();
 	public Square[][] getBoard();
+	public int getPendingSquares();
+	public SquareStatus getStatus(int i, int j);
+	public void changeFlag(int i, int j);
 }
