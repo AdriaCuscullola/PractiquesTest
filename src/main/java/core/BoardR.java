@@ -63,7 +63,6 @@ public class BoardR implements Board{
 		if(!getInitialized()) {
 			initialize(i,j);
 		}
-		
 	}
 	
 	
