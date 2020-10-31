@@ -287,6 +287,17 @@ public class TestSquare {
 		assertFalse(square.isFlagged());
 	}
 	
+	@Test
+	public void testFlagAnOpenSquare() {
+		/*
+		 * Test que comprova que una cel·la no es pugui marcar amb una bandera si està obert
+		 */
+		Square square = new Square();
+		assertFalse(square.isFlagged());
+		square.open();
+		square.changeIsFlagged();
+		assertFalse(square.getIsOpen());
+	}
 	
 	@Test
 	public void testOpenFlaggedSquare() {
