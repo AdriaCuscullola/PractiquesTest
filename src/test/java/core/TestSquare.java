@@ -24,6 +24,15 @@ public class TestSquare {
 	}
 	
 	@Test
+	public void testSetBomb() {
+		Square s = new Square();
+		boolean set = s.setBomb();
+		assertEquals(true, set);
+		set = s.setBomb();
+		assertEquals(false,set);
+	}	
+	
+	@Test
 	public void testGetSquarePosition() {
 		Square square = new Square();
 		square.addBoardPosition(1, 1);

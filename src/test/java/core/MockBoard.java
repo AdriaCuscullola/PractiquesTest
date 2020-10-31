@@ -5,6 +5,12 @@ public class MockBoard implements Board {
 	public int rows;
 	public int col;
 	
+	@Override
+	public Square[][] getBoard() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 	public void addBoard(Square[][] board) {
 		this.board = board;
 	}

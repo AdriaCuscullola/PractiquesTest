@@ -53,9 +53,14 @@ public class Square {
 		return isOpen;
 	}
 	
-	public void setBomb() {
-		isBomb = true;
-		value = -1;
+	public boolean setBomb() {
+		if(isBomb == false) {
+			isBomb = true;
+			value = -1;
+			return true;
+		}
+		else
+			return false;
 	}
 	
 	public boolean getIsBomb() {

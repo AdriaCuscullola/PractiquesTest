@@ -7,4 +7,5 @@ public interface Board {
 	public int getCols();
 	public int getNBombs();
 	public boolean getInitialized();
+	public Square[][] getBoard();
 }
