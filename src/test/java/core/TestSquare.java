@@ -260,4 +260,14 @@ public class TestSquare {
 			}
 		}
 	}
+	
+	/*
+	 * Testos que comproven el mètode de afegir banderes
+	 */
+	
+	@Test
+	public void testSetBandera() {
+		Square square = new Square();
+		assertFalse(square.isFlagged());
+	}
 }
