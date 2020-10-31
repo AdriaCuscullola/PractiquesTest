@@ -10,6 +10,9 @@ public class Square {
 	private boolean isFlagged;
 	
 	public void open() {
+		if(isFlagged) {
+			return;
+		}
 		if(!isOpen) {
 			isOpen = true;
 			if(!isBomb && board != null) {
