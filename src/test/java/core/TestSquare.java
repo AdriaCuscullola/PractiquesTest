@@ -300,4 +300,46 @@ public class TestSquare {
 		square.open();
 		assertFalse(square.getIsOpen());
 	}
+	
+	@Test
+	public void testOpenEmptySquareInBoardWithFlag() {
+		MockBoard board = new MockBoard();
+		board.col = 3;
+		board.rows = 3;
+		Square[][] squares = createBoard(board, 3, 3);
+		squares[2][2].setBomb();
+		squares[1][1].changeIsFlagged();
+		board.addBoard(squares);
+		board.openSquare(0, 0);
+		for(int i = 0; i<3; i++) {
+			for(int j = 0; j<3; j++) {
+				Square square = board.getSquare(i, j);
+				if(i == 2 && j == 2) {
+					assertFalse(square.getIsOpen());
+				} else if (i == 1 && j == 1) {
+					assertFalse(square.getIsOpen());
+				} else {
+					assertTrue(square.getIsOpen());
+				}
+			} 
+		}
+	}
+	
+	@Test
+	public void testOpenEmptySquareFlaggedInBoard() {
+		MockBoard board = new MockBoard();
+		board.col = 3;
+		board.rows = 3;
+		Square[][] squares = createBoard(board, 3, 3);
+		squares[2][2].setBomb();
+		squares[0][0].changeIsFlagged();
+		board.addBoard(squares);
+		board.openSquare(0, 0);
+		for(int i = 0; i<3; i++) {
+			for(int j = 0; j<3; j++) {
+				Square square = board.getSquare(i, j);
+				assertFalse(square.getIsOpen());
+			} 
+		}
+	}
 }
