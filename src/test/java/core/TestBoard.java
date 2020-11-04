@@ -101,21 +101,28 @@ public class TestBoard {
 	
 	
 	/*Tauler amb seed: = 55555
-	oxooox
-	ooooxo
-	xxoooo
-	xoxooo
-	oxooxx
+	oxoooo |0 
+	oooooo |1
+	oxoooo |2
+	ooxooo |3
+	ooooox |4
+	------
+	012345
 	*/
 	@Test
 	public void testPendingSquares() { //test que comprova quantes cel·les buides queden per obrir.
-		Board b = new BoardR(5, 6, 10);
+		Board b = new BoardR(5, 6, 4);
 		int pending = b.getPendingSquares();
-		assertEquals(20, pending);
+		assertEquals(26, pending);
 		b.initialize(4, 3, 55555);
 		b.openSquare(4, 3);
 		pending = b.getPendingSquares();
-		assertEquals(19, pending);
+		assertEquals(25, pending);
+		
+		b.openSquare(0, 5);
+		pending = b.getPendingSquares();
+		assertEquals(11, pending);
+		
 		
 		Board c = new BoardR(1, 2, 1);
 		c.openSquare(0, 1);
