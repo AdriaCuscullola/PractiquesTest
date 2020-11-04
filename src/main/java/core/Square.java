@@ -18,7 +18,6 @@ public class Square {
 		if(!isOpen) {
 			isOpen = true;
 			if(!isBomb && board != null) {
-				
 				value = calcNearBombs();
 				if(value == 0) {
 					board.minusPendingSquares();
