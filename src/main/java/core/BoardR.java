@@ -86,9 +86,11 @@ public class BoardR implements Board{
 		return aux;
 	}
 	
-	public Square getSquare(int i, int j) { //TODO: getSquareisOpen
-		Square s = new Square();
-		return s;
+	public Square getSquare(int i, int j) { 
+		return board[i][j];
+	}
+	public boolean getSquareIsOpen(int i, int j) {
+		return board[i][j].getIsOpen();
 	}
 	
 	public Square[][] getBoard(){

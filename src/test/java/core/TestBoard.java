@@ -115,7 +115,7 @@ public class TestBoard {
 		b.initialize(4, 3, 55555);
 		b.openSquare(4, 3);
 		pending = b.getPendingSquares();
-		assertEquals(16, pending);
+		assertEquals(19, pending);
 		
 		Board c = new BoardR(1, 2, 1);
 		c.openSquare(0, 1);
@@ -126,11 +126,10 @@ public class TestBoard {
 	@Test
 	public void testOpenSquares() { //comprova si s'obre bé la casella (retorna 0), si ja s'ha obert(retorna 1) o si hi ha una bandera(retorna 2).
 		Board b = new BoardR(5, 6, 10);
-		Square[][] R = b.getBoard();
-		boolean isOpen = R[4][3].getIsOpen();
+		boolean isOpen = b.getSquareIsOpen(4,3);
 		assertEquals(false, isOpen);
 		b.openSquare(4, 3);
-		isOpen = R[4][3].getIsOpen();
+		isOpen = b.getSquareIsOpen(4,3);
 		assertEquals(true, isOpen);
 	}
 	

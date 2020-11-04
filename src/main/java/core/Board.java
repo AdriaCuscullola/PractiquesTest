@@ -13,4 +13,5 @@ public interface Board {
 	public void changeFlag(int i, int j);
 	public void initialize(int i, int j, long seed);
 	public void minusPendingSquares();
+	public boolean getSquareIsOpen(int i, int j);
 }

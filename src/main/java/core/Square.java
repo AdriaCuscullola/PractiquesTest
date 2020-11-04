@@ -18,10 +18,9 @@ public class Square {
 		if(!isOpen) {
 			isOpen = true;
 			if(!isBomb && board != null) {
-				
+				board.minusPendingSquares();
 				value = calcNearBombs();
-				if(value == 0) {
-					board.minusPendingSquares();
+				if(value == 0) {					
 					openAdjacents();
 				}
 			}

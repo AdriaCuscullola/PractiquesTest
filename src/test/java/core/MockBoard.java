@@ -6,6 +6,12 @@ public class MockBoard implements Board {
 	public int col;
 	
 	@Override
+	public boolean getSquareIsOpen(int i, int j) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
 	public void minusPendingSquares() {
 		// TODO Auto-generated method stub
 		
