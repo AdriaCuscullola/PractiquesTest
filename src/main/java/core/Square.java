@@ -103,4 +103,7 @@ public class Square {
 			isFlagged = !isFlagged;
 		}
 	}
+	public SquareStatus getStatus() {
+		
+	}
 }

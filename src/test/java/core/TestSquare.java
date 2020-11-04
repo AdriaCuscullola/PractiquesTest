@@ -371,4 +371,41 @@ public class TestSquare {
 			} 
 		}
 	}
+	
+	@Test
+	public void testGetStatusBomb() {
+		Square s = new Square();
+		s.setBomb();
+		SquareStatus real = s.getStatus();
+		SquareStatus aux = SquareStatus.NOT_OPEN;
+		assertEquals(aux, real);
+		s.open();
+		real = S.getStatus();
+		aux = SquareStatus.BOMB;
+		assertEquals(aux,real);
+	}
+	
+	@Test
+	public void testGetStatusFlagged() {
+		Square s = new Square();
+		s.setBomb();
+		SquareStatus real = s.getStatus();
+		SquareStatus aux = SquareStatus.NOT_OPEN;
+		assertEquals(aux, real);
+		s.changeIsFlagged();
+		real = s.getStatus();
+		aux = SquareStatus.FLAGGED;
+		assertEquals(aux,real);
+	}
+	
+	@Test
+	public void testGetStatusOpen() {
+		Square s = new Square();
+		s.open();
+		SquareStatus real = s.getStatus();
+		SquareStatus aux = SquareStatus.VALUE;
+		assertEquals(aux, real);
+	}
+	
+	
 }
