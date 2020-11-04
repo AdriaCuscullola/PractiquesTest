@@ -1,5 +1,5 @@
 package controller;
 
-public class MockController implements Controller {
+public class MockController implements GameInterface {
 
 }
