@@ -6,6 +6,18 @@ public class MockBoard implements Board {
 	public int col;
 	
 	@Override
+	public void minusPendingSquares() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void initialize(int i, int j, long seed) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
 	public int getPendingSquares() {
 		// TODO Auto-generated method stub
 		return 0;

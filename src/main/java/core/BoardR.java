@@ -21,8 +21,8 @@ public class BoardR implements Board{
 			}
 		}
 		int maxBombs = (rows*cols)-1;
-		if(nBombs > maxBombs)
-			nBombs = maxBombs;
+		if(this.nBombs > maxBombs)
+			this.nBombs = maxBombs;
 		this.pendingSquares = (rows*cols)-nBombs;
 	}
 	
@@ -42,9 +42,15 @@ public class BoardR implements Board{
 		return initialized;
 	}
 	
-	public void initialize(int i, int j) {
+	public void initialize(int i, int j, long seed) {
 		initialized = true;
-		Random rand = new Random();
+		Random rand;
+		if(seed != 0) {
+			rand = new Random(seed);
+		}
+		else {
+			rand = new Random();
+		}
 		/*int maxBombs = (rows*cols)-1;
 		if(nBombs > maxBombs)
 			nBombs = maxBombs;*/
@@ -65,11 +71,14 @@ public class BoardR implements Board{
 	
 	public void openSquare(int i, int j) {//TODO:
 		if(!getInitialized()) {
-			initialize(i,j);
+			initialize(i,j, 0);
 		}
-		SquareStatus aux = SquareStatus.VALUE;
+		if(board[i][j].getBoard() == null)
+			board[i][j].setBoard(this);
+		board[i][j].open();
+		/*SquareStatus aux = SquareStatus.VALUE;
 		if(getStatus(i,j) == aux)
-			pendingSquares--;
+			pendingSquares--;*/
 	}
 	
 	public SquareStatus getStatus(int i, int j) {
@@ -95,5 +104,9 @@ public class BoardR implements Board{
 	}
 	public void changeFlag(int i, int j) {
 		board[i][j].changeIsFlagged();
+	}
+	
+	public void minusPendingSquares() {
+		pendingSquares--;
 	}
 }

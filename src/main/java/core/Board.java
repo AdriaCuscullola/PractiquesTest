@@ -11,4 +11,6 @@ public interface Board {
 	public int getPendingSquares();
 	public SquareStatus getStatus(int i, int j);
 	public void changeFlag(int i, int j);
+	public void initialize(int i, int j, long seed);
+	public void minusPendingSquares();
 }

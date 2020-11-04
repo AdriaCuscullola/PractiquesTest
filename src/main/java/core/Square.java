@@ -6,7 +6,7 @@ public class Square {
 	private int value = 0;
 	private int row;
 	private int column;
-	private Board board;
+	private Board board = null;
 	private boolean isFlagged;
 	
 	
@@ -18,14 +18,18 @@ public class Square {
 		if(!isOpen) {
 			isOpen = true;
 			if(!isBomb && board != null) {
+				
 				value = calcNearBombs();
 				if(value == 0) {
+					board.minusPendingSquares();
 					openAdjacents();
 				}
 			}
 		}
 	}
-	
+	public Board getBoard() {
+		return this.board;
+	}
 	private void openAdjacents() {
 		int minRowPosicion = row-1>=0 ? row-1 : 0;
 		int maxRowPosicion = row+1<board.getRows() ? row+1 : board.getRows()-1;

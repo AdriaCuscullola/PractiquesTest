@@ -99,12 +99,23 @@ public class TestBoard {
 		assertEquals(29, bombs);
 	}
 	
+	
+	/*Tauler amb seed: = 55555
+	oxooox
+	ooooxo
+	xxoooo
+	xoxooo
+	oxooxx
+	*/
 	@Test
 	public void testPendingSquares() { //test que comprova quantes cel·les buides queden per obrir.
 		Board b = new BoardR(5, 6, 10);
-		b.openSquare(4, 3);
 		int pending = b.getPendingSquares();
-		assertEquals(19, pending);
+		assertEquals(20, pending);
+		b.initialize(4, 3, 55555);
+		b.openSquare(4, 3);
+		pending = b.getPendingSquares();
+		assertEquals(16, pending);
 		
 		Board c = new BoardR(1, 2, 1);
 		c.openSquare(0, 1);
@@ -164,6 +175,7 @@ public class TestBoard {
 		assertEquals(aux2, real2);
 		
 		R[3][2].setBomb();
+		R[3][2].open();
 		SquareStatus real3 = b.getStatus(3,2);
 		SquareStatus aux3 = SquareStatus.BOMB;
 		assertEquals(aux3, real3);
