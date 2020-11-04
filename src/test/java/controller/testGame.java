@@ -7,14 +7,18 @@ import org.junit.Test;
 
 import core.Board;
 import core.BoardR;
+import core.MockView;
 import core.Square;
+import view.View;
 
 public class testGame {
 
 
 	@Test
-	public void testInitialize() {
+	public void testInitialize() { //
 		Game g = new Game();
+		View view = new MockView();
+		g.setView(view);
 		View v = g.getView();
 		BoardR b = g.getBoard();
 		Square[][] R = b.getBoard();
@@ -24,6 +28,8 @@ public class testGame {
 				bombs += R[i][j].getIsBomb()? 1 : 0;
 			}
 		}
+		assertEquals(12, v.getRows());
+		assertEquals(10, v.getCols());
 		assertEquals(12, b.getRows());
 		assertEquals(10, b.getCols());
 		assertEquals(20, bombs);
