@@ -10,7 +10,7 @@ public class BoardR implements Board{
 	private Square[][] board;
 	private int pendingSquares;
 	
-	BoardR(int rows, int cols, int nBombs){
+	public BoardR(int rows, int cols, int nBombs){
 		this.rows = rows;
 		this.cols = cols;
 		this.nBombs = nBombs;
@@ -68,7 +68,6 @@ public class BoardR implements Board{
 				}
 			}
 		}
-		
 	}
 	
 	public void openSquare(int i, int j) {//TODO:
@@ -76,6 +75,7 @@ public class BoardR implements Board{
 			initialize(i,j, 0);
 		}
 		board[i][j].open();
+		
 		/*SquareStatus aux = SquareStatus.VALUE;
 		if(getStatus(i,j) == aux)
 			pendingSquares--;*/
