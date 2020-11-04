@@ -86,10 +86,6 @@ public class BoardR implements Board{
 		return aux;
 	}
 	
-	public void changeFlag() {
-		
-	}
-	
 	public Square getSquare(int i, int j) { //TODO: getSquareisOpen
 		Square s = new Square();
 		return s;
