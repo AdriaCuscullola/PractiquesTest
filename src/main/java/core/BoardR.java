@@ -18,6 +18,8 @@ public class BoardR implements Board{
 		for(int it = 0; it < rows; it++) {
 			for(int jt = 0; jt < cols; jt++) {
 				board[it][jt] = new Square();
+				board[it][jt].setBoard(this);
+				board[it][jt].addBoardPosition(it, jt);
 			}
 		}
 		int maxBombs = (rows*cols)-1;
@@ -73,8 +75,6 @@ public class BoardR implements Board{
 		if(!getInitialized()) {
 			initialize(i,j, 0);
 		}
-		if(board[i][j].getBoard() == null)
-			board[i][j].setBoard(this);
 		board[i][j].open();
 		/*SquareStatus aux = SquareStatus.VALUE;
 		if(getStatus(i,j) == aux)

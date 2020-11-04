@@ -121,7 +121,7 @@ public class TestBoard {
 		
 		b.openSquare(0, 5);
 		pending = b.getPendingSquares();
-		assertEquals(11, pending);
+		assertEquals(10, pending);
 		
 		
 		Board c = new BoardR(1, 2, 1);
