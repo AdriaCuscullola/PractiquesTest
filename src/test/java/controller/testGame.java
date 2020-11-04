@@ -11,10 +11,6 @@ import core.Square;
 
 public class testGame {
 
-	@Test
-	public void test() {
-		fail("Not yet implemented");
-	}
 
 	@Test
 	public void testInitialize() {
