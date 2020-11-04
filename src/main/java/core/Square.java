@@ -9,8 +9,6 @@ public class Square {
 	private Board board = null;
 	private boolean isFlagged;
 	
-	
-	
 	public void open() {
 		if(isFlagged) {
 			return;
@@ -26,9 +24,7 @@ public class Square {
 			}
 		}
 	}
-	public Board getBoard() {
-		return this.board;
-	}
+
 	private void openAdjacents() {
 		int minRowPosicion = row-1>=0 ? row-1 : 0;
 		int maxRowPosicion = row+1<board.getRows() ? row+1 : board.getRows()-1;
