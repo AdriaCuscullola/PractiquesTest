@@ -103,7 +103,26 @@ public class Square {
 			isFlagged = !isFlagged;
 		}
 	}
+	
 	public SquareStatus getStatus() {
+		SquareStatus aux;
 		
+		if(!isOpen) {
+			if(isFlagged) {
+				aux = SquareStatus.FLAGGED;
+			}
+			else {
+				aux = SquareStatus.NOT_OPEN;
+			}
+		}
+		else {
+			if(isBomb) {
+				aux = SquareStatus.BOMB;
+			}
+			else {
+				aux = SquareStatus.VALUE;
+			}
+		}
+		return aux;
 	}
 }

@@ -6,6 +6,24 @@ public class MockBoard implements Board {
 	public int col;
 	
 	@Override
+	public int getPendingSquares() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public SquareStatus getStatus(int i, int j) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void changeFlag(int i, int j) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
 	public Square[][] getBoard() {
 		// TODO Auto-generated method stub
 		return null;

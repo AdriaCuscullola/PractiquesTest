@@ -380,7 +380,7 @@ public class TestSquare {
 		SquareStatus aux = SquareStatus.NOT_OPEN;
 		assertEquals(aux, real);
 		s.open();
-		real = S.getStatus();
+		real = s.getStatus();
 		aux = SquareStatus.BOMB;
 		assertEquals(aux,real);
 	}
