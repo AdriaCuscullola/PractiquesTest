@@ -18,8 +18,9 @@ public class testGame {
 
 	@Test
 	public void testInitialize() {
-		View v = new View(12, 10, this);	//el tauler per defecte serà 12 X 10.
-		BoardR b = new BoardR(12, 10, 20);
+		Game g = new Game();
+		View v = g.getView();
+		BoardR b = g.getBoard();
 		Square[][] R = b.getBoard();
 		int bombs = 0;
 		for(int i = 0; i < b.getRows(); i++) {
