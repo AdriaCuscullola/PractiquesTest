@@ -17,4 +17,11 @@ public class Game {
 		return board;
 	}
 	
+	public void openBoard(int i, int j) {
+		board.openSquare(i, j);
+	}
+	
+	public void flagBoard(int i, int j) {
+		board.changeFlag(i, j);
+	}
 }
