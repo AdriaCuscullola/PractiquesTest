@@ -6,4 +6,5 @@ public interface View {
 	public int getCols();
 
 	public JButtonExtend[][] getButtons();
+	
 }

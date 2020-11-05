@@ -61,8 +61,9 @@ public class testGame {
 	
 	@Test
 	public void testClickView() {
-		MockView v = new MockView();
-		
+		Game g = new Game();
+		MockView v = new MockView(g);
+		v.click();
 		
 	}
 }
