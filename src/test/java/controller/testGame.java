@@ -64,6 +64,9 @@ public class testGame {
 		Game g = new Game();
 		MockView v = new MockView(g);
 		v.click();
-		
+		Board b = g.getBoard();
+		SquareStatus real = b.getStatus(2, 2);
+		SquareStatus aux = SquareStatus.VALUE;
+		assertEquals(aux, real);
 	}
 }

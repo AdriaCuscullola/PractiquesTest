@@ -1,10 +1,13 @@
 package controller;
 
+import java.awt.event.MouseEvent;
+
 import core.Board;
 import core.BoardR;
+import view.JButtonExtend;
 import view.View;
 
-public class Game {
+public class Game implements GameInterface {
 	private View view;
 	private BoardR board;
 	
@@ -23,5 +26,36 @@ public class Game {
 	
 	public void flagBoard(int i, int j) {
 		board.changeFlag(i, j);
+	}
+	
+	public void mouseClicked(MouseEvent m) {
+		JButtonExtend aux = (JButtonExtend) m.getSource();
+		int i = aux.getRow();
+		int j = aux.getCol();
+		this.openBoard(i, j);
+	}
+
+	@Override
+	public void mouseEntered(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseExited(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mousePressed(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseReleased(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+		
 	}
 }

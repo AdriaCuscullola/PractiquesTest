@@ -11,8 +11,8 @@ import view.View;
 public class MockView implements View{
 	private GameInterface game;
 	
-	MockView(Game game){
-		this.game = (GameInterface) game;
+	public MockView(Game game){
+		this.game = game;
 	}
 	
 	@Override
@@ -38,6 +38,8 @@ public class MockView implements View{
 		
 		MouseEvent me = new MouseEvent(buttonToSimulateClicking, 0, 0, 0, 100, 100, 1, false);
 		//ara toca cridar al click de Game amb el Mousevent.
+		game.mouseClicked(me);
+		
 	}
 
 }
