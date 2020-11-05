@@ -2,6 +2,8 @@ package controller;
 
 import java.awt.event.MouseEvent;
 
+import javax.swing.SwingUtilities;
+
 import core.Board;
 import core.BoardR;
 import view.JButtonExtend;
@@ -28,11 +30,19 @@ public class Game implements GameInterface {
 		board.changeFlag(i, j);
 	}
 	
+	@Override
 	public void mouseClicked(MouseEvent m) {
 		JButtonExtend aux = (JButtonExtend) m.getSource();
 		int i = aux.getRow();
 		int j = aux.getCol();
-		this.openBoard(i, j);
+		if(SwingUtilities.isLeftMouseButton(m)) {
+			this.openBoard(i, j);
+		}
+		else {
+			if(SwingUtilities.isRightMouseButton(m)) {
+				this.flagBoard(i, j);
+			}
+		}
 	}
 
 	@Override

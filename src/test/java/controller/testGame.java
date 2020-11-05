@@ -60,13 +60,24 @@ public class testGame {
 	}
 	
 	@Test
-	public void testClickView() {
+	public void testLeftClick() {
 		Game g = new Game();
 		MockView v = new MockView(g);
-		v.click();
+		v.leftClick();
 		Board b = g.getBoard();
 		SquareStatus real = b.getStatus(2, 2);
 		SquareStatus aux = SquareStatus.VALUE;
+		assertEquals(aux, real);
+	}
+	
+	@Test
+	public void testRightClick() {
+		Game g = new Game();
+		MockView v = new MockView(g);
+		v.rightClick();
+		Board b = g.getBoard();
+		SquareStatus real = b.getStatus(2, 2);
+		SquareStatus aux = SquareStatus.FLAGGED;
 		assertEquals(aux, real);
 	}
 }
