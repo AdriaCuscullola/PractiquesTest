@@ -30,5 +30,16 @@ public class TestView {
 	}
 	
 	
+	@Test
+	public void testButtonConstructor() {
+		int row = 1;
+		int col = 2;
+		GameInterface mock = new MockController();
+		JButtonExtend button = new JButtonExtend(row, col, mock);
+		assertEquals(1, button.getRow());
+		assertEquals(2, button.getCol());
+		assertEquals(mock, button.getController());
+	}
+	
 
 }
