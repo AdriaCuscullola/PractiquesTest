@@ -37,7 +37,7 @@ public class testGame {
 	@Test
 	public void testOpenBoard() {
 		Game g = new Game();
-		BoardR b = g.getBoard();
+		Board b = g.getBoard();
 		g.openBoard(3,3);
 		Square[][] R = b.getBoard();
 		int bombs = 0;
@@ -52,10 +52,17 @@ public class testGame {
 	@Test
 	public void testFlagBoard() {
 		Game g = new Game();
-		BoardR b = g.getBoard();
+		Board b = g.getBoard();
 		g.flagBoard(4,4);
 		SquareStatus real = b.getStatus(4, 4);
 		SquareStatus aux = SquareStatus.FLAGGED;
 		assertEquals(aux, real);		
+	}
+	
+	@Test
+	public void testClickView() {
+		MockView v = new MockView();
+		
+		
 	}
 }

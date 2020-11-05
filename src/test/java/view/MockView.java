@@ -16,4 +16,10 @@ public class MockView implements View{
 		return 10;
 	}
 
+	@Override
+	public JButtonExtend[][] getButtons() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
