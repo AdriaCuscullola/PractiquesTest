@@ -1,11 +1,20 @@
 package controller;
 
+import core.Board;
 import core.BoardR;
+import view.View;
 
 public class Game {
+	private View view;
+	private BoardR board;
 	
 	Game() {
 		//View v = new View(12, 10, this);	//el tauler per defecte serà 12 X 10.
-		BoardR b = new BoardR(12, 10, 20);
+		board = new BoardR(12, 10, 20);
 	}
+	
+	public BoardR getBoard() {
+		return board;
+	}
+	
 }
