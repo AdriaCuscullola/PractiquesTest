@@ -1,5 +1,7 @@
 package controller;
 
-public interface GameInterface {
+import java.awt.event.MouseListener;
+
+public interface GameInterface extends MouseListener{
 
 }

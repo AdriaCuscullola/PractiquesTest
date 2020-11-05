@@ -14,6 +14,7 @@ public class JButtonExtend extends JButton{
 		this.row = row;
 		this.col = col;
 		this.controller = controller;
+		this.addMouseListener(controller);
 	}
 
 	public int getRow() {

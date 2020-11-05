@@ -39,7 +39,8 @@ public class TestView {
 		assertEquals(1, button.getRow());
 		assertEquals(2, button.getCol());
 		assertEquals(mock, button.getController());
+		
+		assertEquals(mock, button.getMouseListeners()[1]);
 	}
-	
 
 }
