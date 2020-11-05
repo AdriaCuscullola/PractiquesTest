@@ -4,7 +4,7 @@ import javax.swing.JButton;
 
 import controller.GameInterface;
 
-public class JButtonExtend extends JButton implements JButtonExtendI{
+public class JButtonExtend extends JButton{
 	private int row;
 	private int col;
 	private GameInterface controller;
