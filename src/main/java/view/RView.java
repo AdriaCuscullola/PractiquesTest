@@ -50,6 +50,9 @@ public class RView implements View {
 		if(square.getStatus() == SquareStatus.NOT_OPEN) {
 			buttons[row][col].setText("");
 			buttons[row][col].setEnabled(true);
+		} else if(square.getStatus() == SquareStatus.BOMB) {
+			buttons[row][col].setText("X");
+			buttons[row][col].setEnabled(false);
 		} else {
 			String text = square.getValue() == 0 ? "" : square.getValue()+"";
 			buttons[row][col].setText(text);
