@@ -1,6 +1,7 @@
 package view;
 
 import controller.GameInterface;
+import core.Square;
 
 public class RView implements View {
 	private int rows;
@@ -34,6 +35,12 @@ public class RView implements View {
 
 	public JButtonExtend[][] getButtons() {
 		return buttons;
+	}
+
+	@Override
+	public void printaTauler(Square[][] tauler) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 	

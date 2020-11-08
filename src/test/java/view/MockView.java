@@ -7,6 +7,7 @@ import javax.swing.SwingUtilities;
 
 import controller.Game;
 import controller.GameInterface;
+import core.Square;
 import view.View;
 
 public class MockView implements View{
@@ -46,6 +47,12 @@ public class MockView implements View{
 		MouseEvent me = new MouseEvent(buttonToSimulateClicking, 0, 0, 0, 100, 100, 1, false, 3); //es necessari ficar 3 per a right click i 1 per a left click.
 				
 		game.mouseClicked(me);
+	}
+
+	@Override
+	public void printaTauler(Square[][] tauler) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
