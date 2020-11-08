@@ -95,6 +95,9 @@ public class TestView {
 		view.proxyPrintaBoto(board[2][0], 2, 0);
 		assertEquals(false, buttons[2][0].isEnabled());
 		assertEquals("1", buttons[2][0].getText());
+		view.proxyPrintaBoto(board[1][0], 1, 0);
+		assertEquals(false, buttons[1][0].isEnabled());
+		assertEquals("X", buttons[1][0].getText());
 	}
 
 }
