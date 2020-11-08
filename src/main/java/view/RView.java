@@ -2,12 +2,15 @@ package view;
 
 import controller.GameInterface;
 import core.Square;
+import core.SquareStatus;
 
 public class RView implements View {
 	private int rows;
 	private int cols;
 	private GameInterface controller;
 	private JButtonExtend[][] buttons;
+	
+	public void proxyPrintaBoto(Square square, int row, int col) { printaBoto(square, row, col); }
 	
 	public RView(int rows, int cols, GameInterface controller) {
 		this.rows = rows;
@@ -41,6 +44,11 @@ public class RView implements View {
 	public void printaTauler(Square[][] tauler) {
 		// TODO Auto-generated method stub
 		
+	}
+	
+	private void printaBoto(Square square, int row, int col) {
+		buttons[row][col].setText("");
+		buttons[row][col].setEnabled(true);
 	}
 	
 	

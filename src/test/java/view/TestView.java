@@ -74,7 +74,7 @@ public class TestView {
 		int row = 1;
 		int col = 2;
 		GameInterface mock = new MockController();
-		View view = new RView(5, 5, mock);
+		RView view = new RView(5, 5, mock);
 		JButtonExtend[][] buttons = view.getButtons();
 		Square[][] board = generateBoard(5, 5);
 		board[1][0].setBomb();
@@ -85,7 +85,7 @@ public class TestView {
 		board[0][2].open();
 		board[1][0].open();
 		//Necesitem separar aquesta funcio per controlar botons sols
-		view.proxyPrintaBoto(board[0][0]);
+		view.proxyPrintaBoto(board[0][0], 0, 0);
 		assertEquals(true, buttons[0][0].isEnabled());
 		assertEquals("", buttons[0][0].getText());
 	}
