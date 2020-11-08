@@ -47,8 +47,13 @@ public class RView implements View {
 	}
 	
 	private void printaBoto(Square square, int row, int col) {
-		buttons[row][col].setText("");
-		buttons[row][col].setEnabled(true);
+		if(square.getStatus() == SquareStatus.NOT_OPEN) {
+			buttons[row][col].setText("");
+			buttons[row][col].setEnabled(true);
+		} else {
+			buttons[row][col].setText("");
+			buttons[row][col].setEnabled(false);
+		}
 	}
 	
 	
