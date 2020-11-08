@@ -51,7 +51,8 @@ public class RView implements View {
 			buttons[row][col].setText("");
 			buttons[row][col].setEnabled(true);
 		} else {
-			buttons[row][col].setText("");
+			String text = square.getValue() == 0 ? "" : square.getValue()+"";
+			buttons[row][col].setText(text);
 			buttons[row][col].setEnabled(false);
 		}
 	}

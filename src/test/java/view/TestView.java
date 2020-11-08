@@ -46,18 +46,17 @@ public class TestView {
 		assertEquals(mock, button.getMouseListeners()[1]);
 	}
 	
-	private Square[][] generateBoard(int rows, int columns) {
-		Board b = new MockBoard();
-		Square[][] board = new Square[rows][columns];
+	private Square[][] createBoard(Board board, int rows, int columns) {
+		Square[][] squares = new Square[rows][columns];
 		for(int i = 0; i<rows; i++) {
 			for(int j = 0; j<columns; j++) {
 				Square newSquare = new Square();
 				newSquare.addBoardPosition(i, j);
-				board[i][j] = newSquare;
-				newSquare.setBoard(b);
+				squares[i][j] = newSquare;
+				newSquare.setBoard(board);
 			}
 		}
-		return board;
+		return squares;
 	}
 	
 	
@@ -71,12 +70,14 @@ public class TestView {
 	 */
 	@Test
 	public void testPrintBoard() {
-		int row = 1;
-		int col = 2;
+		MockBoard boardMock = new MockBoard();
+		boardMock.col = 5;
+		boardMock.rows = 5;
 		GameInterface mock = new MockController();
 		RView view = new RView(5, 5, mock);
 		JButtonExtend[][] buttons = view.getButtons();
-		Square[][] board = generateBoard(5, 5);
+		Square[][] board = createBoard(boardMock, 5, 5);
+		boardMock.addBoard(board);
 		board[1][0].setBomb();
 		board[3][3].setBomb();
 		board[0][4].setBomb();
@@ -91,9 +92,9 @@ public class TestView {
 		view.proxyPrintaBoto(board[4][0], 4, 0);
 		assertEquals(false, buttons[4][0].isEnabled());
 		assertEquals("", buttons[4][0].getText());
-		view.proxyPrintaBoto(board[2][0], 0, 0);
+		view.proxyPrintaBoto(board[2][0], 2, 0);
 		assertEquals(false, buttons[2][0].isEnabled());
-		assertEquals("", buttons[2][0].getText());
+		assertEquals("1", buttons[2][0].getText());
 	}
 
 }
