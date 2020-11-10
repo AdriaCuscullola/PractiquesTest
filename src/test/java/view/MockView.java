@@ -16,7 +16,11 @@ public class MockView implements View{
 		// TODO Auto-generated method stub
 		
 	}
-
+	
+	public void reset() {
+		//this.game.resetGame();
+	}
+	
 	private GameInterface game;
 	
 	public MockView(Game game){
