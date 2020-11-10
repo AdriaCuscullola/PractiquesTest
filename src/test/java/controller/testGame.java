@@ -80,4 +80,35 @@ public class testGame {
 		SquareStatus aux = SquareStatus.FLAGGED;
 		assertEquals(aux, real);
 	}
+	//TODO: MIRAR SI EL JOC ESTA ACABAT O NO, funcio que cridarà mouseclicked();
+	
+	/*Tauler amb seed: = 55555
+	oxoooo |0 
+	oooooo |1
+	oxoooo |2
+	ooxooo |3
+	ooooox |4
+	------
+	012345
+	*/
+	@Test
+	public void testJocAcabat() {
+		Game g = new Game();
+		Board b = g.getBoard();
+		b = new BoardR(12,10,119);
+		g.openBoard(3, 3);
+		boolean boo = g.isFinished();
+		assertEquals(true, boo);
+		
+		Game h = new Game();
+		Board j = h.getBoard();
+		j = new BoardR(5,6,4);
+		j.initialize(4, 3, 55555);
+		h.openBoard(3, 4);
+		boo = h.isFinished();
+		assertEquals(false, boo);
+		h.openBoard(0, 1); //bomba
+		boo = h.isFinished();
+		assertEquals(true, boo);
+	}
 }
