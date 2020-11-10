@@ -6,16 +6,25 @@ import javax.swing.SwingUtilities;
 
 import core.Board;
 import core.BoardR;
+import core.SquareStatus;
 import view.JButtonExtend;
+import view.RView;
 import view.View;
 
 public class Game implements GameInterface {
 	private View view;
 	private BoardR board;
 	
-	Game() {
-		//View v = new View(12, 10, this);	//el tauler per defecte serà 12 X 10.
+	public Game() {
+		View v = new RView(12, 10, this);	//el tauler per defecte serà 12 X 10.
 		board = new BoardR(12, 10, 20);
+	}
+	public Game(int i, int j, int bombs) {
+		board = new BoardR(i, j, bombs);
+	}
+	
+	public void setView(View view) {
+		this.view = view;
 	}
 	
 	public BoardR getBoard() {
@@ -30,6 +39,22 @@ public class Game implements GameInterface {
 		board.changeFlag(i, j);
 	}
 	
+	public boolean isFinished(int i, int j) {
+		SquareStatus aux = board.getStatus(i, j);
+		boolean boo = false;
+		if(aux == SquareStatus.BOMB) {
+			view.finish(false);
+			boo = true;
+		}
+		else {
+			if (0 == board.getPendingSquares()) {
+				view.finish(true);
+				boo = true;
+			}
+		}
+		return boo;
+	}
+	
 	@Override
 	public void mouseClicked(MouseEvent m) {
 		JButtonExtend aux = (JButtonExtend) m.getSource();
@@ -37,6 +62,7 @@ public class Game implements GameInterface {
 		int j = aux.getCol();
 		if(SwingUtilities.isLeftMouseButton(m)) {
 			this.openBoard(i, j);
+			isFinished(i, j);
 		}
 		else {
 			if(SwingUtilities.isRightMouseButton(m)) {

@@ -93,22 +93,24 @@ public class testGame {
 	*/
 	@Test
 	public void testJocAcabat() {
-		Game g = new Game();
-		Board b = g.getBoard();
-		b = new BoardR(12,10,119);
+		Game g = new Game(12,10,119);
+		MockView v = new MockView(g);
+		g.setView(v);
+		Board b = g.getBoard();	
 		g.openBoard(3, 3);
-		boolean boo = g.isFinished();
+		boolean boo = g.isFinished(3, 3);
 		assertEquals(true, boo);
 		
-		Game h = new Game();
+		Game h = new Game(5,6,4);
+		MockView d = new MockView(h);
+		h.setView(d);
 		Board j = h.getBoard();
-		j = new BoardR(5,6,4);
 		j.initialize(4, 3, 55555);
 		h.openBoard(3, 4);
-		boo = h.isFinished();
+		boo = h.isFinished(3, 4);
 		assertEquals(false, boo);
 		h.openBoard(0, 1); //bomba
-		boo = h.isFinished();
+		boo = h.isFinished(0, 1);
 		assertEquals(true, boo);
 	}
 }

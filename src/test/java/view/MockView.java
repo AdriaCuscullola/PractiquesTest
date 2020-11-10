@@ -11,6 +11,12 @@ import core.Square;
 import view.View;
 
 public class MockView implements View{
+	@Override
+	public void finish(boolean guanyat) {
+		// TODO Auto-generated method stub
+		
+	}
+
 	private GameInterface game;
 	
 	public MockView(Game game){

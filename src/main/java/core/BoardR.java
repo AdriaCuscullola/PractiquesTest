@@ -100,6 +100,7 @@ public class BoardR implements Board{
 	public int getPendingSquares() {
 		return pendingSquares;
 	}
+	
 	public void changeFlag(int i, int j) {
 		board[i][j].changeIsFlagged();
 	}

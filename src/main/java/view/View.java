@@ -11,4 +11,6 @@ public interface View {
 	
 	public void printaTauler(Square[][] tauler);
 	
+	public void finish(boolean guanyat);
+	
 }

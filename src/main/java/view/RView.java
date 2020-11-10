@@ -36,6 +36,12 @@ public class RView implements View {
 		return cols;
 	}
 
+	@Override
+	public void finish(boolean guanyat) {
+		// TODO Auto-generated method stub
+		
+	}
+
 	public JButtonExtend[][] getButtons() {
 		return buttons;
 	}
