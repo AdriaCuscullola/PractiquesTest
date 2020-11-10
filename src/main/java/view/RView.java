@@ -47,16 +47,20 @@ public class RView implements View {
 	}
 	
 	private void printaBoto(Square square, int row, int col) {
-		if(square.getStatus() == SquareStatus.NOT_OPEN) {
+		switch(square.getStatus()) {
+		case NOT_OPEN:
 			buttons[row][col].setText("");
 			buttons[row][col].setEnabled(true);
-		} else if(square.getStatus() == SquareStatus.BOMB) {
+			break;
+		case BOMB:
 			buttons[row][col].setText("X");
 			buttons[row][col].setEnabled(false);
-		} else if(square.getStatus() == SquareStatus.FLAGGED){
+			break;
+		case FLAGGED:
 			buttons[row][col].setText("F");
 			buttons[row][col].setEnabled(true);
-		} else {
+			break;
+		default:
 			String text = square.getValue() == 0 ? "" : square.getValue()+"";
 			buttons[row][col].setText(text);
 			buttons[row][col].setEnabled(false);
