@@ -85,6 +85,7 @@ public class TestView {
 		board[4][0].open();
 		board[0][2].open();
 		board[1][0].open();
+		board[0][0].changeIsFlagged();
 		//Necesitem separar aquesta funcio per controlar botons sols
 		view.proxyPrintaBoto(board[0][0], 0, 0);
 		assertEquals(true, buttons[0][0].isEnabled());
@@ -98,6 +99,9 @@ public class TestView {
 		view.proxyPrintaBoto(board[1][0], 1, 0);
 		assertEquals(false, buttons[1][0].isEnabled());
 		assertEquals("X", buttons[1][0].getText());
+		view.proxyPrintaBoto(board[0][0], 0, 0);
+		assertEquals(true, buttons[0][0].isEnabled());
+		assertEquals("F", buttons[0][0].getText());
 	}
 
 }
