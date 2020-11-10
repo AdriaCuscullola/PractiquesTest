@@ -95,7 +95,6 @@ public class testGame {
 		Game g = new Game(12,10,119);
 		MockView v = new MockView(g);
 		g.setView(v);
-		Board b = g.getBoard();	
 		g.openBoard(3, 3);
 		boolean boo = g.isFinished(3, 3);
 		assertEquals(true, boo);
@@ -115,17 +114,16 @@ public class testGame {
 	
 	@Test
 	public void testResetGame() {
-		Game g = new Game();
+		Game g = new Game(12,10,119);
 		g.openBoard(3, 3);
 		Board b = g.getBoard();
 		int pendings = b.getPendingSquares();
-		assertEquals(98, pendings);
+		assertEquals(0, pendings);
 		
 		MockView v = new MockView(g);
 		v.reset();
 		b = g.getBoard();
 		pendings = b.getPendingSquares();
-		assertEquals(99, pendings);
-		
+		assertEquals(100, pendings);
 	}
 }

@@ -55,6 +55,10 @@ public class Game implements GameInterface {
 		return boo;
 	}
 	
+	public void resetGame() {
+		this.board = new BoardR(12, 10, 20);
+	}
+	
 	@Override
 	public void mouseClicked(MouseEvent m) {
 		JButtonExtend aux = (JButtonExtend) m.getSource();

@@ -18,10 +18,10 @@ public class MockView implements View{
 	}
 	
 	public void reset() {
-		//this.game.resetGame();
+		this.game.resetGame();
 	}
 	
-	private GameInterface game;
+	private Game game;
 	
 	public MockView(Game game){
 		this.game = game;
