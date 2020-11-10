@@ -41,18 +41,18 @@ public class Game implements GameInterface {
 	
 	public boolean isFinished(int i, int j) {
 		SquareStatus aux = board.getStatus(i, j);
-		boolean boo = false;
+		boolean finished = false;
 		if(aux == SquareStatus.BOMB) {
 			view.finish(false);
-			boo = true;
+			finished = true;
 		}
 		else {
 			if (0 == board.getPendingSquares()) {
 				view.finish(true);
-				boo = true;
+				finished = true;
 			}
 		}
-		return boo;
+		return finished;
 	}
 	
 	public void resetGame() {
@@ -60,7 +60,7 @@ public class Game implements GameInterface {
 	}
 	
 	@Override
-	public void mouseClicked(MouseEvent m) {
+	public void mouseClicked(MouseEvent m) { 
 		JButtonExtend aux = (JButtonExtend) m.getSource();
 		int i = aux.getRow();
 		int j = aux.getCol();
@@ -73,6 +73,7 @@ public class Game implements GameInterface {
 				this.flagBoard(i, j);
 			}
 		}
+		view.printaTauler(board.getBoard());
 	}
 
 	@Override
