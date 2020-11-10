@@ -81,6 +81,17 @@ public class testGame {
 		assertEquals(aux, real);
 	}
 	
+	@Test
+	public void testMiddleClick() {
+		Game g = new Game();
+		MockView v = new MockView(g);
+		v.middleClick();
+		Board b = g.getBoard();
+		SquareStatus real = b.getStatus(2, 2);
+		SquareStatus aux = SquareStatus.NOT_OPEN;
+		assertEquals(aux, real);
+	}
+	
 	/*Tauler amb seed: = 55555
 	oxoooo |0 
 	oooooo |1
