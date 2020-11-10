@@ -154,6 +154,7 @@ public class TestBoard {
 	@Test
 	public void testSetFlag() { //comprova si es va canviant correctament l'estat de flag de la casella.
 		Board b = new BoardR(5, 6, 10);
+		b.initialize(4, 3, 55555);
 		Square[][] R = b.getBoard();
 		b.openSquare(4, 3);
 		boolean isFlag = R[3][2].isFlagged();
@@ -169,6 +170,7 @@ public class TestBoard {
 	@Test
 	public void testGetStatus() { //comprova si el getStatus retorna el ENUM indicat.
 		Board b = new BoardR(5, 6, 10);
+		b.initialize(4, 3, 55555);
 		Square[][] R = b.getBoard();
 		
 		b.openSquare(4, 3);
