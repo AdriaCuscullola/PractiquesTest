@@ -18,7 +18,7 @@ public class RView implements View {
 	private JButtonExtend[][] buttons;
 	private JFrame frame;
 	
-	private static final int SIZE = 700;
+	private static final int SIZE = 50;
 	
 	public void proxyPrintaBoto(Square square, int row, int col) { printaBoto(square, row, col); }
 	
@@ -27,7 +27,7 @@ public class RView implements View {
 		this.cols = cols;
 		this.controller = controller;
 		frame = new JFrame("Minesweeper");
-        frame.setSize(SIZE, SIZE);
+        frame.setSize(SIZE*cols, SIZE*rows);
         frame.setLayout(new BorderLayout());
 		createButtons();
 		
