@@ -2,6 +2,8 @@ package view;
 
 import static org.junit.Assert.*;
 
+import javax.swing.JOptionPane;
+
 import org.junit.Test;
 
 import controller.GameInterface;

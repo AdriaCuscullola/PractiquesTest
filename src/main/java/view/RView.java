@@ -1,5 +1,12 @@
 package view;
 
+import java.awt.BorderLayout;
+import java.awt.Container;
+import java.awt.GridLayout;
+
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+
 import controller.GameInterface;
 import core.Square;
 import core.SquareStatus;
@@ -9,6 +16,9 @@ public class RView implements View {
 	private int cols;
 	private GameInterface controller;
 	private JButtonExtend[][] buttons;
+	private JFrame frame;
+	
+	private static final int SIZE = 700;
 	
 	public void proxyPrintaBoto(Square square, int row, int col) { printaBoto(square, row, col); }
 	
@@ -16,16 +26,29 @@ public class RView implements View {
 		this.rows = rows;
 		this.cols = cols;
 		this.controller = controller;
+		frame = new JFrame("Minesweeper");
+        frame.setSize(SIZE, SIZE);
+        frame.setLayout(new BorderLayout());
 		createButtons();
+		
+        
+        frame.setLocationRelativeTo(null);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setVisible(true);
 	}
 	
 	private void createButtons() {
+		Container grid = new Container();
+        grid.setLayout(new GridLayout(rows, cols));
 		buttons = new JButtonExtend[rows][cols];
 		for(int i = 0; i < rows; i++) {
 			for(int j = 0; j < cols; j++) {
 				buttons[i][j] = new JButtonExtend(i, j, controller);
+				grid.add(buttons[i][j]);
 			}
 		}
+		frame.add(grid, BorderLayout.CENTER);
+		
 	}
 
 	public int getRows() {
@@ -38,7 +61,17 @@ public class RView implements View {
 
 	@Override
 	public void finish(boolean guanyat) {
-		// TODO Auto-generated method stub
+		if(guanyat) {
+			JOptionPane.showMessageDialog(
+	                frame, "Congratz bro, u win!!!", "GG",
+	                JOptionPane.INFORMATION_MESSAGE
+	        );
+		} else {
+			JOptionPane.showMessageDialog(
+	                frame, "Meh, u suck!", "Noob",
+	                JOptionPane.ERROR_MESSAGE
+	        );
+		}
 		
 	}
 

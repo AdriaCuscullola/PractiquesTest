@@ -42,13 +42,16 @@ public class Game implements GameInterface {
 	
 	public boolean isFinished(int i, int j) {
 		SquareStatus aux = board.getStatus(i, j);
+		
 		boolean finished = false;
 		if(aux == SquareStatus.BOMB) {
+			view.printaTauler(board.getBoard());
 			view.finish(false);
 			finished = true;
 		}
 		else {
 			if (0 == board.getPendingSquares()) {
+				view.printaTauler(board.getBoard());
 				view.finish(true);
 				finished = true;
 			}
@@ -68,11 +71,8 @@ public class Game implements GameInterface {
 		if(SwingUtilities.isLeftMouseButton(m)) {
 			this.openBoard(i, j);
 			isFinished(i, j);
-		}
-		else {
-			if(SwingUtilities.isRightMouseButton(m)) {
-				this.flagBoard(i, j);
-			}
+		} else if(SwingUtilities.isRightMouseButton(m)) {
+			this.flagBoard(i, j);
 		}
 		Square[][] auxSquare = board.getBoard();
 		view.printaTauler(auxSquare);
