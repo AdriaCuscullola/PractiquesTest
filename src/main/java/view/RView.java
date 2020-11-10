@@ -26,15 +26,15 @@ public class RView implements View {
 		this.rows = rows;
 		this.cols = cols;
 		this.controller = controller;
-		/*frame = new JFrame("Minesweeper");
+		frame = new JFrame("Minesweeper");
         frame.setSize(SIZE*cols, SIZE*rows);
-        frame.setLayout(new BorderLayout());*/
+        frame.setLayout(new BorderLayout());
 		createButtons();
 		
         
-        /*frame.setLocationRelativeTo(null);
+        frame.setLocationRelativeTo(null);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setVisible(true);*/
+        frame.setVisible(true);
 	}
 	
 	private void createButtons() {
@@ -47,7 +47,7 @@ public class RView implements View {
 				grid.add(buttons[i][j]);
 			}
 		}
-		//frame.add(grid, BorderLayout.CENTER);
+		frame.add(grid, BorderLayout.CENTER);
 		
 	}
 
