@@ -48,7 +48,11 @@ public class RView implements View {
 
 	@Override
 	public void printaTauler(Square[][] tauler) {
-		// TODO Auto-generated method stub
+		for(int i = 0; i < tauler.length; i++) {
+			for(int j = 0; j < tauler[0].length; j++) {
+				printaBoto(tauler[i][j], i, j);
+			}
+		}
 		
 	}
 	
