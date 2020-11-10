@@ -47,7 +47,7 @@ public class RView implements View {
 				grid.add(buttons[i][j]);
 			}
 		}
-		frame.add(grid, BorderLayout.CENTER);
+		//frame.add(grid, BorderLayout.CENTER);
 		
 	}
 
@@ -61,7 +61,7 @@ public class RView implements View {
 
 	@Override
 	public void finish(boolean guanyat) {
-		if(guanyat) {
+		/*if(guanyat) {
 			JOptionPane.showMessageDialog(
 	                frame, "Congratz bro, u win!!!", "GG",
 	                JOptionPane.INFORMATION_MESSAGE
@@ -71,7 +71,7 @@ public class RView implements View {
 	                frame, "Meh, u suck!", "Noob",
 	                JOptionPane.ERROR_MESSAGE
 	        );
-		}
+		}*/
 		
 	}
 
