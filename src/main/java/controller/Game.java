@@ -6,6 +6,7 @@ import javax.swing.SwingUtilities;
 
 import core.Board;
 import core.BoardR;
+import core.Square;
 import core.SquareStatus;
 import view.JButtonExtend;
 import view.RView;
@@ -16,7 +17,7 @@ public class Game implements GameInterface {
 	private BoardR board;
 	
 	public Game() {
-		View v = new RView(12, 10, this);	//el tauler per defecte serà 12 X 10.
+		view = new RView(12, 10, this);	//el tauler per defecte serà 12 X 10.
 		board = new BoardR(12, 10, 20);
 	}
 	public Game(int i, int j, int bombs) {
@@ -73,7 +74,8 @@ public class Game implements GameInterface {
 				this.flagBoard(i, j);
 			}
 		}
-		view.printaTauler(board.getBoard());
+		Square[][] auxSquare = board.getBoard();
+		view.printaTauler(auxSquare);
 	}
 
 	@Override
