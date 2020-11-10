@@ -103,5 +103,40 @@ public class TestView {
 		assertEquals(true, buttons[0][4].isEnabled());
 		assertEquals("F", buttons[0][4].getText());
 	}
+	
+	/*
+	 * En esencia es el mateix que el de adalt, pero utilitza la funcio printaTauler
+	 */
+	@Test
+	public void testPrintBoardTotal() {
+		MockBoard boardMock = new MockBoard();
+		boardMock.col = 5;
+		boardMock.rows = 5;
+		GameInterface mock = new MockController();
+		RView view = new RView(5, 5, mock);
+		JButtonExtend[][] buttons = view.getButtons();
+		Square[][] board = createBoard(boardMock, 5, 5);
+		boardMock.addBoard(board);
+		board[1][0].setBomb();
+		board[3][3].setBomb();
+		board[0][4].setBomb();
+		board[1][4].setBomb();
+		board[4][0].open();
+		board[0][2].open();
+		board[1][0].open();
+		board[0][4].changeIsFlagged();
+		view.printaTauler(board);
+		//Necesitem separar aquesta funcio per controlar botons sols
+		assertEquals(true, buttons[0][0].isEnabled());
+		assertEquals("", buttons[0][0].getText());
+		assertEquals(false, buttons[4][0].isEnabled());
+		assertEquals("", buttons[4][0].getText());
+		assertEquals(false, buttons[2][0].isEnabled());
+		assertEquals("1", buttons[2][0].getText());
+		assertEquals(false, buttons[1][0].isEnabled());
+		assertEquals("X", buttons[1][0].getText());
+		assertEquals(true, buttons[0][4].isEnabled());
+		assertEquals("F", buttons[0][4].getText());
+	}
 
 }
