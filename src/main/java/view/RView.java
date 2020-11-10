@@ -72,7 +72,7 @@ public class RView implements View {
 	                JOptionPane.ERROR_MESSAGE
 	        );
 		}
-		
+		controller.resetGame();
 	}
 
 	public JButtonExtend[][] getButtons() {

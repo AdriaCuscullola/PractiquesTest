@@ -5,6 +5,8 @@ import java.awt.event.MouseListener;
 
 public interface GameInterface extends MouseListener{
 
+	public void resetGame();
+	
 	@Override
 	default void mouseClicked(MouseEvent arg0) {
 		// TODO Auto-generated method stub

@@ -135,6 +135,6 @@ public class testGame {
 		v.reset();
 		b = g.getBoard();
 		pendings = b.getPendingSquares();
-		assertEquals(100, pendings);
+		assertEquals(1, pendings);
 	}
 }

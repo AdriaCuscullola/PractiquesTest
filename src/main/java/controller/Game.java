@@ -15,13 +15,23 @@ import view.View;
 public class Game implements GameInterface {
 	private View view;
 	private BoardR board;
+	private int row;
+	private int col;
+	private int bombs;
+	
 	
 	public Game() {
 		view = new RView(12, 10, this);	//el tauler per defecte serà 12 X 10.
 		board = new BoardR(12, 10, 20);
+		row = 12;
+		col = 10;
+		bombs = 20;
 	}
 	public Game(int i, int j, int bombs) {
 		board = new BoardR(i, j, bombs);
+		row = i;
+		col = j;
+		this.bombs = bombs;
 	}
 	
 	public void setView(View view) {
@@ -60,7 +70,7 @@ public class Game implements GameInterface {
 	}
 	
 	public void resetGame() {
-		this.board = new BoardR(12, 10, 20);
+		this.board = new BoardR(row, col, bombs);
 	}
 	
 	@Override
