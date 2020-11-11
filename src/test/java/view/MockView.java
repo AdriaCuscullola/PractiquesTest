@@ -17,7 +17,7 @@ public class MockView implements View{
 		
 	}
 	
-	public void reset() {
+	public void reset(int dificulty) {
 		this.game.resetGame();
 	}
 	

@@ -63,6 +63,7 @@ public class testGame {
 	public void testLeftClick() {
 		Game g = new Game(12, 10, 20);
 		MockView v = new MockView(g);
+		g.setView(v);
 		v.leftClick();
 		Board b = g.getBoard();
 		SquareStatus real = b.getStatus(2, 2);
@@ -74,6 +75,7 @@ public class testGame {
 	public void testRightClick() {
 		Game g = new Game(12, 10, 20);
 		MockView v = new MockView(g);
+		g.setView(v);
 		v.rightClick();
 		Board b = g.getBoard();
 		SquareStatus real = b.getStatus(2, 2);
@@ -85,6 +87,7 @@ public class testGame {
 	public void testMiddleClick() {
 		Game g = new Game(12, 10, 20);
 		MockView v = new MockView(g);
+		g.setView(v);
 		v.middleClick();
 		Board b = g.getBoard();
 		SquareStatus real = b.getStatus(2, 2);
@@ -132,9 +135,27 @@ public class testGame {
 		assertEquals(0, pendings);
 		
 		MockView v = new MockView(g);
-		v.reset();
+		v.reset(0);
 		b = g.getBoard();
 		pendings = b.getPendingSquares();
-		assertEquals(1, pendings);
+		assertEquals(70, pendings);
+		assertEquals(8, b.getRows());
+		assertEquals(10, b.getCols());
+		
+		v.reset(1);
+		b = g.getBoard();
+		pendings = b.getPendingSquares();
+		assertEquals(212, pendings);
+		assertEquals(14, b.getRows());
+		assertEquals(18, b.getCols());
+		
+		v.reset(2);
+		b = g.getBoard();
+		pendings = b.getPendingSquares();
+		assertEquals(3, pendings);
+		assertEquals(20, b.getRows());
+		assertEquals(24, b.getCols());
+		
 	}
+	
 }
