@@ -132,9 +132,27 @@ public class testGame {
 		assertEquals(0, pendings);
 		
 		MockView v = new MockView(g);
-		v.reset();
+		v.reset(0);
 		b = g.getBoard();
 		pendings = b.getPendingSquares();
-		assertEquals(1, pendings);
+		assertEquals(70, pendings);
+		assertEquals(8, b.getRows());
+		assertEquals(10, b.getCols());
+		
+		v.reset(1);
+		b = g.getBoard();
+		pendings = b.getPendingSquares();
+		assertEquals(212, pendings);
+		assertEquals(14, b.getRows());
+		assertEquals(18, b.getCols());
+		
+		v.reset(2);
+		b = g.getBoard();
+		pendings = b.getPendingSquares();
+		assertEquals(381, pendings);
+		assertEquals(20, b.getRows());
+		assertEquals(24, b.getCols());
+		
 	}
+	
 }
