@@ -23,11 +23,7 @@ public class Game implements GameInterface {
 	private final int[] BOMBS_NUM = {10, 40, 99};
 	
 	public Game() {
-		view = new RView(12, 10, this);	//el tauler per defecte serà 12 X 10.
-		board = new BoardR(12, 10, 20);
-		row = 12;
-		col = 10;
-		bombs = 20;
+		view = new RView(this);
 	}
 	public Game(int i, int j, int bombs) {
 		board = new BoardR(i, j, bombs);

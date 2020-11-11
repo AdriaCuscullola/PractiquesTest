@@ -17,10 +17,30 @@ public class RView implements View {
 	private GameInterface controller;
 	private JButtonExtend[][] buttons;
 	private JFrame frame;
-	
+	private Container grid;
+	private final int[] ROWS_NUM = {8, 14, 20};
+	private final int[] COLS_NUM = {10, 18, 24};
+	private int dificulty;
 	private static final int SIZE = 50;
 	
 	public void proxyPrintaBoto(Square square, int row, int col) { printaBoto(square, row, col); }
+	
+	public RView(GameInterface controller) {
+		this.controller = controller;
+		frame = new JFrame("Minesweeper");
+        frame.setSize(100, 100);
+        frame.setLayout(new BorderLayout());
+        frame.setLocationRelativeTo(null);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        int dificulty = showMessage("Selecciona una dificultat", "MineSweeper", JOptionPane.QUESTION_MESSAGE);
+        controller.resetGame(dificulty);
+        rows = ROWS_NUM[dificulty];
+        cols = COLS_NUM[dificulty];
+        frame.setSize(SIZE*cols, SIZE*rows);
+        createButtons();
+        frame.setVisible(true);
+        this.dificulty = dificulty;
+	}
 	
 	public RView(int rows, int cols, GameInterface controller) {
 		this.rows = rows;
@@ -37,8 +57,21 @@ public class RView implements View {
         frame.setVisible(true);
 	}
 	
+	private int showMessage(String message, String title, int option) {
+		int seleccio = JOptionPane.showOptionDialog(
+				   frame,
+				   message, 
+				   title,
+				   JOptionPane.YES_NO_CANCEL_OPTION,
+				   option,
+				   null,  
+				   new Object[] { "facil", "nomal", "dificil" },
+				   "normal");
+		return seleccio;
+	}
+	
 	private void createButtons() {
-		Container grid = new Container();
+		grid = new Container();
         grid.setLayout(new GridLayout(rows, cols));
 		buttons = new JButtonExtend[rows][cols];
 		for(int i = 0; i < rows; i++) {
@@ -61,18 +94,21 @@ public class RView implements View {
 
 	@Override
 	public void finish(boolean guanyat) {
+		int dificulty;
 		if(guanyat) {
-			JOptionPane.showMessageDialog(
-	                frame, "Congratz bro, u win!!!", "GG",
-	                JOptionPane.INFORMATION_MESSAGE
-	        );
+			dificulty = showMessage("Has guanyat", "Fi", JOptionPane.INFORMATION_MESSAGE);
 		} else {
-			JOptionPane.showMessageDialog(
-	                frame, "Meh, u suck!", "Noob",
-	                JOptionPane.ERROR_MESSAGE
-	        );
+			dificulty = showMessage("Has perdut", "Fi", JOptionPane.ERROR_MESSAGE);
 		}
-		controller.resetGame();
+		controller.resetGame(dificulty);
+		rows = ROWS_NUM[dificulty];
+        cols = COLS_NUM[dificulty];
+        if(this.dificulty != dificulty) {
+	        frame.setSize(SIZE*cols, SIZE*rows);
+	        frame.remove(grid);
+	        createButtons();
+	        this.dificulty = dificulty;
+        }
 	}
 
 	public JButtonExtend[][] getButtons() {
