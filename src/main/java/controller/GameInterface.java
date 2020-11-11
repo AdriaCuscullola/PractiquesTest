@@ -5,7 +5,7 @@ import java.awt.event.MouseListener;
 
 public interface GameInterface extends MouseListener{
 
-	public void resetGame();
+	public void resetGame(int dificulty);
 	void mouseClicked(MouseEvent arg0);
 
 	void mouseEntered(MouseEvent arg0);

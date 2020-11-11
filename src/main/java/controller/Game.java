@@ -18,7 +18,9 @@ public class Game implements GameInterface {
 	private int row;
 	private int col;
 	private int bombs;
-	
+	private final int[] ROWS_NUM = {8, 14, 20};
+	private final int[] COLS_NUM = {10, 18, 24};
+	private final int[] BOMBS_NUM = {10, 40, 99};
 	
 	public Game() {
 		view = new RView(12, 10, this);	//el tauler per defecte serà 12 X 10.
@@ -69,7 +71,10 @@ public class Game implements GameInterface {
 		return finished;
 	}
 	
-	public void resetGame() {
+	public void resetGame(int dificulty) {
+		row = ROWS_NUM[dificulty];
+		col = COLS_NUM[dificulty];
+		bombs = BOMBS_NUM[dificulty];
 		this.board = new BoardR(row, col, bombs);
 	}
 	

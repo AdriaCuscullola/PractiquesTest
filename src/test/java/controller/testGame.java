@@ -152,7 +152,7 @@ public class testGame {
 		v.reset(2);
 		b = g.getBoard();
 		pendings = b.getPendingSquares();
-		assertEquals(3, pendings);
+		assertEquals(381, pendings);
 		assertEquals(20, b.getRows());
 		assertEquals(24, b.getCols());
 		

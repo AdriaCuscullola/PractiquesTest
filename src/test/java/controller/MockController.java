@@ -5,7 +5,7 @@ import java.awt.event.MouseEvent;
 public class MockController implements GameInterface {
 
 	@Override
-	public void resetGame() {
+	public void resetGame(int dificulty) {
 		// TODO Auto-generated method stub
 		
 	}
