@@ -32,6 +32,7 @@ public class Game implements GameInterface {
 		row = i;
 		col = j;
 		this.bombs = bombs;
+		this.view = new RView(i,j,this);
 	}
 	
 	public void setView(View view) {

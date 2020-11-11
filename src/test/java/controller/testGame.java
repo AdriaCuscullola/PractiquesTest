@@ -17,7 +17,7 @@ public class testGame {
 
 	@Test
 	public void testInitializeBoard() { //
-		Game g = new Game();
+		Game g = new Game(12, 10, 20);
 		/*View view = new MockView();
 		g.setView(view);
 		View v = g.getView();*/
@@ -36,7 +36,7 @@ public class testGame {
 	
 	@Test
 	public void testOpenBoard() {
-		Game g = new Game();
+		Game g = new Game(12, 10, 20);
 		Board b = g.getBoard();
 		g.openBoard(3,3);
 		Square[][] R = b.getBoard();
@@ -51,7 +51,7 @@ public class testGame {
 	
 	@Test
 	public void testFlagBoard() {
-		Game g = new Game();
+		Game g = new Game(12, 10, 20);
 		Board b = g.getBoard();
 		g.flagBoard(4,4);
 		SquareStatus real = b.getStatus(4, 4);
@@ -61,7 +61,7 @@ public class testGame {
 	
 	@Test
 	public void testLeftClick() {
-		Game g = new Game();
+		Game g = new Game(12, 10, 20);
 		MockView v = new MockView(g);
 		v.leftClick();
 		Board b = g.getBoard();
@@ -72,7 +72,7 @@ public class testGame {
 	
 	@Test
 	public void testRightClick() {
-		Game g = new Game();
+		Game g = new Game(12, 10, 20);
 		MockView v = new MockView(g);
 		v.rightClick();
 		Board b = g.getBoard();
@@ -83,7 +83,7 @@ public class testGame {
 	
 	@Test
 	public void testMiddleClick() {
-		Game g = new Game();
+		Game g = new Game(12, 10, 20);
 		MockView v = new MockView(g);
 		v.middleClick();
 		Board b = g.getBoard();
