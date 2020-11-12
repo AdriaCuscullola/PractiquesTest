@@ -147,12 +147,23 @@ public class TestView {
 	public void testTriaDificultatEnAcabar() {
 		RView view = mock(RView.class);
 		MockController mock = new MockController();
+		doCallRealMethod().when(view).setController(any(MockController.class));
 		view.setController(mock);
-		when(view.showMessage()).thenReturn(0);
+		doCallRealMethod().when(view).getRows();
+		doCallRealMethod().when(view).getCols();
+		when(view.showMessage(any(String.class),any(String.class),any(int.class))).thenReturn(0);
+		doCallRealMethod().when(view).finish(any(boolean.class));
 		view.finish(true);
 		assertEquals(8, view.getRows());
 		assertEquals(10, view.getCols());
-		
+		when(view.showMessage(any(String.class),any(String.class),any(int.class))).thenReturn(1);
+		view.finish(false);
+		assertEquals(14, view.getRows());
+		assertEquals(18, view.getCols());
+		when(view.showMessage(any(String.class),any(String.class),any(int.class))).thenReturn(2);
+		view.finish(false);
+		assertEquals(20, view.getRows());
+		assertEquals(24, view.getCols());
 	}
 
 }

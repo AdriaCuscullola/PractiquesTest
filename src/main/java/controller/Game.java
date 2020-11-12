@@ -18,9 +18,9 @@ public class Game implements GameInterface {
 	private int row;
 	private int col;
 	private int bombs;
-	private final int[] ROWS_NUM = {8, 14, 20};
-	private final int[] COLS_NUM = {10, 18, 24};
-	private final int[] BOMBS_NUM = {10, 40, 99};
+	private static final int[] ROWS_NUM = {8, 14, 20};
+	private static final int[] COLS_NUM = {10, 18, 24};
+	private static final int[] BOMBS_NUM = {10, 40, 99};
 	
 	public Game() {
 		view = new RView(this);

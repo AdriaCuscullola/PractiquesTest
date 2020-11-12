@@ -18,12 +18,17 @@ public class RView implements View {
 	private JButtonExtend[][] buttons;
 	private JFrame frame;
 	private Container grid;
-	private final int[] ROWS_NUM = {8, 14, 20};
-	private final int[] COLS_NUM = {10, 18, 24};
+	private static final int[] ROWS_NUM = {8, 14, 20};
+	private static final int[] COLS_NUM = {10, 18, 24};
 	private int dificulty;
 	private static final int SIZE = 50;
 	
+	
 	public void proxyPrintaBoto(Square square, int row, int col) { printaBoto(square, row, col); }
+	protected void setController(GameInterface game) {
+		this.controller = game;
+	}
+	
 	
 	public RView(GameInterface controller) {
 		this.controller = controller;
@@ -57,7 +62,7 @@ public class RView implements View {
         frame.setVisible(true);
 	}
 	
-	private int showMessage(String message, String title, int option) {
+	protected int showMessage(String message, String title, int option) {
 		int seleccio = JOptionPane.showOptionDialog(
 				   frame,
 				   message, 
@@ -103,7 +108,7 @@ public class RView implements View {
 		controller.resetGame(dificulty);
 		rows = ROWS_NUM[dificulty];
         cols = COLS_NUM[dificulty];
-        if(this.dificulty != dificulty) {
+        if(this.dificulty != dificulty && this.frame!=null) {
 	        frame.setSize(SIZE*cols, SIZE*rows);
 	        frame.remove(grid);
 	        createButtons();
