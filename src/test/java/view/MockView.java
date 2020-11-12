@@ -64,6 +64,10 @@ public class MockView implements View{
 		MouseEvent me = new MouseEvent(buttonToSimulateClicking, 0, 0, 0, 100, 100, 1, false, 2); //es necessari ficar 3 per a right click i 1 per a left click.
 				
 		game.mouseClicked(me);
+		game.mouseEntered(me);
+		game.mouseExited(me);
+		game.mouseReleased(me);
+		game.mousePressed(me);
 	}
 
 	@Override
