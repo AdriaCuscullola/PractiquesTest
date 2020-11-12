@@ -1,6 +1,7 @@
 package view;
 
 import static org.junit.Assert.*;
+import static org.mockito.Mockito.*;
 
 import javax.swing.JOptionPane;
 
@@ -139,6 +140,19 @@ public class TestView {
 		assertEquals("X", buttons[1][0].getText());
 		assertEquals(true, buttons[0][4].isEnabled());
 		assertEquals("F", buttons[0][4].getText());
+	}
+	
+	
+	@Test
+	public void testTriaDificultatEnAcabar() {
+		RView view = mock(RView.class);
+		MockController mock = new MockController();
+		view.setController(mock);
+		when(view.showMessage()).thenReturn(0);
+		view.finish(true);
+		assertEquals(8, view.getRows());
+		assertEquals(10, view.getCols());
+		
 	}
 
 }
