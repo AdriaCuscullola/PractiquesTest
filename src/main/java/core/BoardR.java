@@ -71,7 +71,7 @@ public class BoardR implements Board{
 	}
 	
 	public void openSquare(int i, int j) {//TODO:
-		if(i > -1 && (i < cols || i < rows) && (j < rows || j < cols) && j > -1) {
+		if(i > -1 && i < rows && j < cols && j > -1) {
 			if(!getInitialized()) {
 				initialize(i,j, 0);
 			}

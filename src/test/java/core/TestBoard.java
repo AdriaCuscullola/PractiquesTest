@@ -201,6 +201,8 @@ public class TestBoard {
 		int pending = b.getPendingSquares();
 		assertEquals(20, pending);
 		
-		
+		b.openSquare(5, 5);
+		pending = b.getPendingSquares();
+		assertEquals(20, pending);
 	}
 }
