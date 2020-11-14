@@ -71,14 +71,12 @@ public class BoardR implements Board{
 	}
 	
 	public void openSquare(int i, int j) {//TODO:
-		if(!getInitialized()) {
-			initialize(i,j, 0);
+		if(i > -1 && (i < cols || i < rows) && (j < rows || j < cols) && j > -1) {
+			if(!getInitialized()) {
+				initialize(i,j, 0);
+			}
+			board[i][j].open();
 		}
-		board[i][j].open();
-		
-		/*SquareStatus aux = SquareStatus.VALUE;
-		if(getStatus(i,j) == aux)
-			pendingSquares--;*/
 	}
 	
 	public SquareStatus getStatus(int i, int j) {

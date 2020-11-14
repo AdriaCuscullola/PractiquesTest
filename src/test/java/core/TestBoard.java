@@ -193,4 +193,14 @@ public class TestBoard {
 		SquareStatus aux4 = SquareStatus.FLAGGED;
 		assertEquals(aux4, real4);
 	}
+	
+	@Test
+	public void testLimitFrontera() {
+		Board b = new BoardR(5, 6, 10);
+		b.openSquare(-1, 0);
+		int pending = b.getPendingSquares();
+		assertEquals(20, pending);
+		
+		
+	}
 }
