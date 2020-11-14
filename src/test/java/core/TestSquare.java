@@ -140,6 +140,48 @@ public class TestSquare {
 	}
 	
 	@Test
+	public void testValorCasellaNumUnaBombes() {
+		/*
+		 * Generem un Board 3x3 i posem la casella de test al mig, aquesta te un total de 1 mines al costat. Cas limit
+		 */
+		MockBoard board = new MockBoard();
+		board.col = 3;
+		board.rows = 3;
+		Square testedSquare = new Square();
+		testedSquare.setBoard(board);
+		testedSquare.addBoardPosition(1, 1);
+		Square[][] squares;
+		Square bomb = new Square();
+		bomb.setBomb();
+		Square normalSquare = new Square();
+		squares = new Square[][] {{bomb, normalSquare, normalSquare}, {normalSquare, testedSquare, normalSquare}, {normalSquare, normalSquare, normalSquare}};
+		board.addBoard(squares);
+		testedSquare.open();
+		assertEquals(1, testedSquare.getValue());
+	}
+	
+	@Test
+	public void testValorCasellaNumSetBombes() {
+		/*
+		 * Generem un Board 3x3 i posem la casella de test al mig, aquesta te un total de 7 mines al costat. Cas limit
+		 */
+		MockBoard board = new MockBoard();
+		board.col = 3;
+		board.rows = 3;
+		Square testedSquare = new Square();
+		testedSquare.setBoard(board);
+		testedSquare.addBoardPosition(1, 1);
+		Square[][] squares;
+		Square bomb = new Square();
+		bomb.setBomb();
+		Square normalSquare = new Square();
+		squares = new Square[][] {{bomb, bomb, normalSquare}, {bomb, testedSquare, bomb}, {bomb, bomb, bomb}};
+		board.addBoard(squares);
+		testedSquare.open();
+		assertEquals(7, testedSquare.getValue());
+	}
+	
+	@Test
 	public void testValorCasellaNumEnUnCostat() {
 		/*
 		 * Generem un Board 3x3 i posem la casella de test al centre superior, aquesta te un total de 2 mines al costat.
@@ -179,6 +221,27 @@ public class TestSquare {
 		board.addBoard(squares);
 		testedSquare.open();
 		assertEquals(1, testedSquare.getValue());
+	}
+	
+	@Test
+	public void testValorCasellaNumEnUnaCantonadaInferior() {
+		/*
+		 * Generem un Board 3x3 i posem la casella de test a la cantonada inferior dreta, aquesta te un total de 2 mina al costat.
+		 */
+		MockBoard board = new MockBoard();
+		board.col = 3;
+		board.rows = 3;
+		Square testedSquare = new Square();
+		testedSquare.setBoard(board);
+		testedSquare.addBoardPosition(2, 2);
+		Square[][] squares;
+		Square bomb = new Square();
+		bomb.setBomb();
+		Square normalSquare = new Square();
+		squares = new Square[][] {{bomb, normalSquare, normalSquare}, {normalSquare, bomb, normalSquare}, {bomb, bomb, testedSquare}};
+		board.addBoard(squares);
+		testedSquare.open();
+		assertEquals(2, testedSquare.getValue());
 	}
 	
 	/*

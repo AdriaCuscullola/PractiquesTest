@@ -86,7 +86,6 @@ public class RView implements View {
 			}
 		}
 		frame.add(grid, BorderLayout.CENTER);
-		
 	}
 
 	public int getRows() {
