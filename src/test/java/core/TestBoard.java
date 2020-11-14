@@ -83,7 +83,7 @@ public class TestBoard {
 	}
 	
 	@Test
-	public void testInitializedLimitUpperBombes() { //comprovació valor limit ficant més bombes de les possibles.
+	public void testInitializedLimitBombes() { //comprovació valor limit ficant més bombes de les possibles.
 		Board b = new BoardR(5, 6, 30);
 		
 		b.openSquare(4, 3);
@@ -94,9 +94,19 @@ public class TestBoard {
 			for (int j = 0; j < b.getCols(); j++) {
 				bombs += R[i][j].getIsBomb()? 1 : 0;
 			}
-		}
-		
+		}		
 		assertEquals(29, bombs);
+		
+		Board c = new BoardR(5, 6, -1);
+		c.openSquare(4, 3);
+		Square[][] T = c.getBoard();
+		bombs = 0;
+		for(int i = 0; i < c.getRows(); i++) {
+			for (int j = 0; j < c.getCols(); j++) {
+				bombs += T[i][j].getIsBomb()? 1 : 0;
+			}
+		}		
+		assertEquals(0, bombs);
 	}
 	
 	
@@ -192,5 +202,25 @@ public class TestBoard {
 		SquareStatus real4 = b.getStatus(3,1);
 		SquareStatus aux4 = SquareStatus.FLAGGED;
 		assertEquals(aux4, real4);
+	}
+	
+	@Test
+	public void testLimitFrontera() {
+		Board b = new BoardR(5, 6, 10);
+		b.openSquare(-1, 0);
+		int pending = b.getPendingSquares();
+		assertEquals(20, pending);
+		
+		b.openSquare(5, 5);
+		pending = b.getPendingSquares();
+		assertEquals(20, pending);
+		
+		b.openSquare(5, -1);
+		pending = b.getPendingSquares();
+		assertEquals(20, pending);
+		
+		b.openSquare(3,7);
+		pending = b.getPendingSquares();
+		assertEquals(20, pending);
 	}
 }
