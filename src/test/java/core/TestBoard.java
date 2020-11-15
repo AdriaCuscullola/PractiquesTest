@@ -203,6 +203,16 @@ public class TestBoard {
 		assertEquals(aux4, real4);
 	}
 	
+	/*Tauler amb seed: = 55555
+	oxoooo |0 
+	oooooo |1
+	oxoooo |2
+	ooxooo |3
+	ooooox |4
+	------
+	012345
+	*/
+	
 	@Test
 	public void testLimitFrontera() {
 		Board b = new BoardR(5, 6, 10);
@@ -221,6 +231,27 @@ public class TestBoard {
 		b.openSquare(-1,6);
 		pending = b.getPendingSquares();
 		assertEquals(20, pending);
+		
+		b = new BoardR(5, 6, 4);
+		b.initialize(4, 3, 55555);
+		b.openSquare(4, 3);
+		
+		b.openSquare(1, 0);
+		pending = b.getPendingSquares();
+		assertEquals(24, pending);
+		
+		b.openSquare(3, 5);
+		pending = b.getPendingSquares();
+		assertEquals(23, pending);
+		
+		b.openSquare(0, 2);
+		pending = b.getPendingSquares();
+		assertEquals(22, pending);
+		
+		b.openSquare(3, 4);
+		pending = b.getPendingSquares();
+		assertEquals(21, pending);
+		
 	}
 	
 	@Test
