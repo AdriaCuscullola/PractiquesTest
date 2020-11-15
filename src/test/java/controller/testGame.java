@@ -156,6 +156,5 @@ public class testGame {
 		assertEquals(20, b.getRows());
 		assertEquals(24, b.getCols());
 		
-	}
-	
+	}	
 }

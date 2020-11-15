@@ -67,7 +67,7 @@ public class TestBoard {
 	
 	@Test
 	public void testInitializedMaximBombes() { //comprovació valor limit maxim bombes.
-		Board b = new BoardR(5, 6, 30);
+		Board b = new BoardR(5, 6, 29);
 		
 		b.openSquare(4, 3);
 		Square[][] R = b.getBoard();
