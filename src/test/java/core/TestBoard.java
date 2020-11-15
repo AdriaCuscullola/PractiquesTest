@@ -177,6 +177,23 @@ public class TestBoard {
 	}
 	
 	@Test
+	public void testSetFlagFronteres() { //comprova si es va canviant correctament l'estat de flag de la casella.
+		Board b = new BoardR(5, 6, 10);
+		b.initialize(4, 3, 55555);
+		Square[][] R = b.getBoard();
+		b.openSquare(4, 3);
+		b.changeFlag(-1,0);
+		b.changeFlag(0,-1);
+		b.changeFlag(5,0);
+		b.changeFlag(0,6);
+		b.changeFlag(1,0);
+		b.changeFlag(0,1);
+		b.changeFlag(4,5); //Valor frontera
+		b.changeFlag(3,5);
+		b.changeFlag(3,4);
+	}
+	
+	@Test
 	public void testGetStatus() { //comprova si el getStatus retorna el ENUM indicat.
 		Board b = new BoardR(5, 6, 10);
 		b.initialize(4, 3, 55555);
