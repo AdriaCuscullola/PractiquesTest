@@ -187,10 +187,15 @@ public class TestBoard {
 		b.changeFlag(5,0);
 		b.changeFlag(0,6);
 		b.changeFlag(1,0);
+		assertEquals(true, R[1][0].isFlagged());
 		b.changeFlag(0,1);
+		assertEquals(true, R[0][1].isFlagged());
 		b.changeFlag(4,5); //Valor frontera
+		assertEquals(true, R[4][5].isFlagged());
 		b.changeFlag(3,5);
+		assertEquals(true, R[3][5].isFlagged());
 		b.changeFlag(3,4);
+		assertEquals(true, R[3][4].isFlagged());
 	}
 	
 	@Test
