@@ -470,5 +470,44 @@ public class TestSquare {
 		assertEquals(aux, real);
 	}
 	
+	@Test
+	public void testGetStatusDecisionCoverage() {
+		MockBoard board = new MockBoard();
+		board.col = 3;
+		board.rows = 3;
+		Square[][] squares = createBoard(board, 3, 3);
+		squares[2][2].setBomb();
+		squares[0][0].changeIsFlagged();
+		board.addBoard(squares);
+		board.openSquare(1, 0);
+		assertEquals(SquareStatus.FLAGGED, squares[0][0].getStatus());
+		assertEquals(SquareStatus.VALUE, squares[1][0].getStatus());
+		assertEquals(SquareStatus.NOT_OPEN, squares[2][2].getStatus());
+		board.openSquare(2, 2);
+		assertEquals(SquareStatus.BOMB, squares[2][2].getStatus());
+	}
+	
+	@Test
+	public void testOpenDecisionCoverage() {
+		MockBoard board = new MockBoard();
+		boolean[][] results = {{false, true, true}, {true, true, true}, {true, true, true}};
+		int[][] values = {{0, 0, 0}, {0, 1, 1}, {0, 1, -1}};
+		board.col = 3;
+		board.rows = 3;
+		Square[][] squares = createBoard(board, 3, 3);
+		squares[2][2].setBomb();
+		squares[0][0].changeIsFlagged();
+		board.addBoard(squares);
+		board.openSquare(1, 0);
+		board.openSquare(2, 2);
+		for(int i = 0; i<3; i++) {
+			for(int j = 0; j<3; j++) {
+				Square square = board.getSquare(i, j);
+				assertEquals(results[i][j], square.getIsOpen());
+				assertEquals(values[i][j], square.getValue());
+			} 
+		}
+	}
+	
 	
 }

@@ -12,45 +12,33 @@ public class Square {
 	public void open() {
 		if(isFlagged) {
 			return;
-		}
-		if(!isOpen) {
+		} else if(!isOpen) {
 			isOpen = true;
 			if(!isBomb && board != null) {
+				int minRowPosicion = row-1>=0 ? row-1 : 0;
+				int maxRowPosicion = row+1<board.getRows() ? row+1 : board.getRows()-1;
+				int minColPosicion = column-1>=0 ? column-1 : 0;
+				int maxColPosicion = column+1<board.getCols() ? column+1 : board.getCols()-1;
 				board.minusPendingSquares();
-				value = calcNearBombs();
-				if(value == 0) {					
-					openAdjacents();
+				for(int i = minRowPosicion; i<=maxRowPosicion; i++) {
+					for(int j = minColPosicion; j<=maxColPosicion; j++) {
+						if(board.getSquare(i, j).isBomb) {
+							value++;
+						}
+					}
 				}
-			}
-		}
-	}
-	private void openAdjacents() {
-		int minRowPosicion = row-1>=0 ? row-1 : 0;
-		int maxRowPosicion = row+1<board.getRows() ? row+1 : board.getRows()-1;
-		int minColPosicion = column-1>=0 ? column-1 : 0;
-		int maxColPosicion = column+1<board.getCols() ? column+1 : board.getCols()-1;
-		for(int i = minRowPosicion; i<=maxRowPosicion; i++) {
-			for(int j = minColPosicion; j<=maxColPosicion; j++) {
-				board.openSquare(i, j);
+				if(value == 0) {					
+					for(int i = minRowPosicion; i<=maxRowPosicion; i++) {
+						for(int j = minColPosicion; j<=maxColPosicion; j++) {
+							board.openSquare(i, j);
+						}
+					}
+				}
 			}
 		}
 	}
 	
-	private int calcNearBombs() {
-		int newValue = 0;
-		int minRowPosicion = row-1>=0 ? row-1 : 0;
-		int maxRowPosicion = row+1<board.getRows() ? row+1 : board.getRows()-1;
-		int minColPosicion = column-1>=0 ? column-1 : 0;
-		int maxColPosicion = column+1<board.getCols() ? column+1 : board.getCols()-1;
-		for(int i = minRowPosicion; i<=maxRowPosicion; i++) {
-			for(int j = minColPosicion; j<=maxColPosicion; j++) {
-				if(board.getSquare(i, j).isBomb) {
-					newValue++;
-				}
-			}
-		}
-		return newValue;
-	}
+	
 	
 	
 	public boolean getIsOpen() {
@@ -104,22 +92,16 @@ public class Square {
 	
 	public SquareStatus getStatus() {
 		SquareStatus aux;
-		
 		if(!isOpen) {
 			if(isFlagged) {
 				aux = SquareStatus.FLAGGED;
-			}
-			else {
+			} else {
 				aux = SquareStatus.NOT_OPEN;
 			}
-		}
-		else {
-			if(isBomb) {
+		} else if(isBomb) {
 				aux = SquareStatus.BOMB;
-			}
-			else {
-				aux = SquareStatus.VALUE;
-			}
+		} else {
+			aux = SquareStatus.VALUE;
 		}
 		return aux;
 	}

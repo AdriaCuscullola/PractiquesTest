@@ -258,6 +258,17 @@ public class TestBoard {
 		}
 		assertEquals(15, bombs);
 		
+		b = new BoardR(5, 6, 15);
+		b.initialize(0, 0, 55555);
+		T = b.getBoard();
+		bombs = 0;
+		for(int i = 0; i < b.getRows(); i++) {
+			for (int j = 0; j < b.getCols(); j++) {
+				bombs += T[i][j].getIsBomb()? 1 : 0;
+			}
+		}
+		assertEquals(15, bombs);
+		
 		b = new BoardR(5, 6, 28);
 		b.initialize(0, 0, 0);
 		T = b.getBoard();
