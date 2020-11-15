@@ -280,4 +280,20 @@ public class TestBoard {
 		}
 		assertEquals(29, bombs);		
 	}
+	
+	@Test
+	public void conditionCoverageOpen() {
+		Board b = new BoardR(5, 6, 29);
+		b.openSquare(-1, -1);
+		b.openSquare(-1, 7);
+		b.openSquare(7, -1);
+		b.openSquare(-1, 2);
+		b.openSquare(7, 2);
+		b.openSquare(2, 7);
+		b.openSquare(2, -1);
+		b.openSquare(2, 2);
+		
+		int pendings = b.getPendingSquares();
+		assertEquals(0, pendings);
+	}
 }
