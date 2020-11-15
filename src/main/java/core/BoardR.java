@@ -100,7 +100,9 @@ public class BoardR implements Board{
 	}
 	
 	public void changeFlag(int i, int j) {
-		board[i][j].changeIsFlagged();
+		if(i > -1 && i < rows && j < cols && j > -1) {
+			board[i][j].changeIsFlagged();
+		}
 	}
 	
 	public void minusPendingSquares() {
