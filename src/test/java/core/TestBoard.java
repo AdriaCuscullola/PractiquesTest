@@ -67,7 +67,7 @@ public class TestBoard {
 	
 	@Test
 	public void testInitializedMaximBombes() { //comprovació valor limit maxim bombes.
-		Board b = new BoardR(5, 6, 30);
+		Board b = new BoardR(5, 6, 29);
 		
 		b.openSquare(4, 3);
 		Square[][] R = b.getBoard();
@@ -107,8 +107,7 @@ public class TestBoard {
 			}
 		}		
 		assertEquals(0, bombs);
-	}
-	
+	}	
 	
 	/*Tauler amb seed: = 55555
 	oxoooo |0 
@@ -151,7 +150,7 @@ public class TestBoard {
 	}
 	
 	@Test 
-	public void testIsBomb() { //comprova si es fica la bomba correctament i si al obrir la casella de la bomba retorna -1.
+	public void testIsBomb() { //comprova si es fica la bomba correctament i si al obrir la casella de la bomba retorna bomba.
 		Board c = new BoardR(1, 2, 1);
 		Square[][] R = c.getBoard();
 		boolean bomb = R[0][0].getIsBomb();
@@ -207,11 +206,11 @@ public class TestBoard {
 	@Test
 	public void testLimitFrontera() {
 		Board b = new BoardR(5, 6, 10);
-		b.openSquare(-1, 0);
+		b.openSquare(-1, -1);
 		int pending = b.getPendingSquares();
 		assertEquals(20, pending);
 		
-		b.openSquare(5, 5);
+		b.openSquare(5, 6);
 		pending = b.getPendingSquares();
 		assertEquals(20, pending);
 		
@@ -219,8 +218,66 @@ public class TestBoard {
 		pending = b.getPendingSquares();
 		assertEquals(20, pending);
 		
-		b.openSquare(3,7);
+		b.openSquare(-1,6);
 		pending = b.getPendingSquares();
 		assertEquals(20, pending);
+	}
+	
+	@Test
+	public void loopTestingInitialize() {
+		Board b = new BoardR(5, 6, 0);
+		b.initialize(0, 0, 0);
+		Square[][] T = b.getBoard();
+		int bombs = 0;
+		for(int i = 0; i < b.getRows(); i++) {
+			for (int j = 0; j < b.getCols(); j++) {
+				bombs += T[i][j].getIsBomb()? 1 : 0;
+			}
+		}	
+		assertEquals(0, bombs);
+		
+		b = new BoardR(5, 6, 1);
+		b.initialize(0, 0, 0);
+		T = b.getBoard();
+		bombs = 0;
+		for(int i = 0; i < b.getRows(); i++) {
+			for (int j = 0; j < b.getCols(); j++) {
+				bombs += T[i][j].getIsBomb()? 1 : 0;
+			}
+		}
+		assertEquals(1, bombs);
+		
+		b = new BoardR(5, 6, 15);
+		b.initialize(0, 0, 0);
+		T = b.getBoard();
+		bombs = 0;
+		for(int i = 0; i < b.getRows(); i++) {
+			for (int j = 0; j < b.getCols(); j++) {
+				bombs += T[i][j].getIsBomb()? 1 : 0;
+			}
+		}
+		assertEquals(15, bombs);
+		
+		b = new BoardR(5, 6, 28);
+		b.initialize(0, 0, 0);
+		T = b.getBoard();
+		bombs = 0;
+		for(int i = 0; i < b.getRows(); i++) {
+			for (int j = 0; j < b.getCols(); j++) {
+				bombs += T[i][j].getIsBomb()? 1 : 0;
+			}
+		}
+		assertEquals(28, bombs);		
+	
+		b = new BoardR(5, 6, 29);
+		b.initialize(0, 0, 0);
+		T = b.getBoard();
+		bombs = 0;
+		for(int i = 0; i < b.getRows(); i++) {
+			for (int j = 0; j < b.getCols(); j++) {
+				bombs += T[i][j].getIsBomb()? 1 : 0;
+			}
+		}
+		assertEquals(29, bombs);		
 	}
 }
