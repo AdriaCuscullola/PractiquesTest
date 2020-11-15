@@ -244,7 +244,7 @@ public class TestBoard {
 		pending = b.getPendingSquares();
 		assertEquals(23, pending);
 		
-		b.openSquare(0, 2);
+		b.openSquare(1, 1);
 		pending = b.getPendingSquares();
 		assertEquals(22, pending);
 		
