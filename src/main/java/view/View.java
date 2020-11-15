@@ -13,4 +13,6 @@ public interface View {
 	
 	public void finish(boolean guanyat);
 	
+	public void start();
+	
 }

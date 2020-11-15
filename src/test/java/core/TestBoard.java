@@ -303,7 +303,7 @@ public class TestBoard {
 		b.openSquare(2, 7);
 		b.openSquare(2, -1);
 		b.openSquare(2, 2);
-		
+		b.openSquare(2, 1);
 		int pendings = b.getPendingSquares();
 		assertEquals(0, pendings);
 	}

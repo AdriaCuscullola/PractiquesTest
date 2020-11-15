@@ -127,6 +127,36 @@ public class testGame {
 	}
 	
 	@Test
+	public void testGameInici() {
+		Game g = new Game();
+		MockView v = new MockView(g);
+		v.addDif(0);
+		g.setView(v);
+		g.start();
+		Board b = g.getBoard();
+		assertEquals(10, b.getCols());
+		assertEquals(8, b.getRows());
+		
+		g = new Game();
+		v = new MockView(g);
+		v.addDif(1);
+		g.setView(v);
+		g.start();
+		b = g.getBoard();
+		assertEquals(18, b.getCols());
+		assertEquals(14, b.getRows());
+		
+		g = new Game();
+		v = new MockView(g);
+		v.addDif(2);
+		g.setView(v);
+		g.start();
+		b = g.getBoard();
+		assertEquals(24, b.getCols());
+		assertEquals(20, b.getRows());
+	}
+	
+	@Test
 	public void testResetGame() {
 		Game g = new Game(12,10,119);
 		g.openBoard(3, 3);
@@ -157,4 +187,5 @@ public class testGame {
 		assertEquals(24, b.getCols());
 		
 	}	
+	
 }

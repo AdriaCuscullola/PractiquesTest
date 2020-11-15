@@ -26,6 +26,10 @@ public class Game implements GameInterface {
 		view = new RView(this);
 	}
 	
+	public void start() {
+		view.start();
+	}
+	
 	public Game(int i, int j, int bombs) {
 		board = new BoardR(i, j, bombs);
 		row = i;
