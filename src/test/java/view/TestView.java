@@ -14,7 +14,12 @@ import core.MockBoard;
 import core.Square;
 
 public class TestView {
-
+	
+	/**
+	 * TDD. Caja negra. Utiliza un mock del controlador. Comprueba que al generar la vista
+	 * con los valores de entrada (filas / columnas), estos se asocien de forma correcta y también
+	 * que la generación dde los botones tengan los datos de inicialización correctos.
+	 */
 	@Test
 	public void testConstructor() {
 		GameInterface mock = new MockController();
@@ -35,7 +40,10 @@ public class TestView {
 		assertEquals(10, buttons[0].length);
 	}
 	
-	
+	/**
+	 * TDD. Caja negra. Utiliza un mock del controlador. Comprueba que la generacion de un boton
+	 * sea la correcta con los datos de entrada especificados y sus valores por defecto
+	 */
 	@Test
 	public void testButtonConstructor() {
 		int row = 1;
@@ -70,6 +78,13 @@ public class TestView {
 	 * 0 0 1    |
 	 * 0 0 1    |
 	 * S'ha de mirar: Si esta enabled i el text.
+	 */
+	
+	/**
+	 * TDD. Caja negra. Utiliza un mock del controlador y de board. Utiliza un proxy de
+	 * un método privado. Comprueba que al pasarle distintos Squares, los botones se printen
+	 * con el valor adequado. Particiones equivalentes tenemos todos los tipos de Squares posibles
+	 * Con valor, Sin Valor,  Sin Abrir, Con bandera y Bomba
 	 */
 	@Test
 	public void testPrintBoard() {
@@ -107,8 +122,10 @@ public class TestView {
 		assertEquals("F", buttons[0][4].getText());
 	}
 	
-	/*
-	 * En esencia es el mateix que el de adalt, pero utilitza la funcio printaTauler
+	/**
+	 * TDD. Caja negra. Utiliza un mock del controlador y de board. Se genera el mismmo
+	 * test que el anterior pero utilizando el método que llamara el constructor donde
+	 * se pasa el tablero entero y lo printa todo a la vez.
 	 */
 	@Test
 	public void testPrintBoardTotal() {
@@ -143,6 +160,11 @@ public class TestView {
 	}
 	
 	
+	/**
+	 * Caja negra. Utiliza un mock del controlador y uno de la propia vista. Se encarga que 
+	 * los valores de la vista y la cantidad de botones sean los correctos dependiendo del 
+	 * valor de dificultad pasado por el usuari. Este valor ha sido mockeado en la propia vista.
+	 */
 	@Test
 	public void testTriaDificultatEnAcabar() {
 		RView view = mock(RView.class);

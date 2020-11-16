@@ -6,6 +6,13 @@ import org.junit.Test;
 
 public class TestSquare {
 	
+	/*
+	 * Tests de getters y setters basicos
+	 */
+	
+	/*
+	 * TDD. Caja Negra. Test que comprueba si el método open marca la casilla como abierta
+	 */
 	@Test
 	public void testOpen() {
 		Square s = new Square();
@@ -14,6 +21,9 @@ public class TestSquare {
 		assertEquals(true, isOpen);
 	}
 	
+	/*
+	 * TDD. Caja Negra. Test que comprueba si el método setBomb marca la casilla como bomba
+	 */
 	@Test
 	public void testBomba() {
 		Square s = new Square();
@@ -23,6 +33,10 @@ public class TestSquare {
 		assertEquals(-1, s.getValue());
 	}
 	
+	/*
+	 * TDD. Caja Negra. Test que comprueba si el método setBomb devuelve si la bomba se ha marcado o
+	 * ya lo estaba
+	 */
 	@Test
 	public void testSetBomb() {
 		Square s = new Square();
@@ -32,22 +46,28 @@ public class TestSquare {
 		assertEquals(false,set);
 	}	
 	
+	/*
+	 * TDD. Caja Negra. Test que comprueba si el método addBoardPosition añade correctamente la posicion
+	 * en el square.
+	 */
 	@Test
 	public void testGetSquarePosition() {
 		Square square = new Square();
-		square.addBoardPosition(1, 1);
+		square.addBoardPosition(1, 2);
 		assertEquals(1, square.getRow());
-		assertEquals(1, square.getColumn());
+		assertEquals(2, square.getColumn());
 	}
+	
 	/*
 	 * Tests de Board de 1x1
 	 */
 	
+	/*
+	 * TDD. Caja Negra. Se utiliza un Mock de board. Test que comprueba si el valor al abrir una casilla
+	 * vacia en un tablero unico es igual a 0.
+	 */
 	@Test
 	public void testOpenSquareEnUnBoardDeUnaSquare() {
-		/*
-		 * Es genera un board 1x1 i es mira de obrir la casella que hi ha
-		 */
 		MockBoard board = new MockBoard();
 		board.col = 1;
 		board.rows = 1;
@@ -58,11 +78,12 @@ public class TestSquare {
 		assertTrue(board.getSquare(0, 0).getIsOpen());
 	}
 	
+	/*
+	 * TDD. Caja Negra. Se utiliza un Mock de board. Test que comprueba si el valor al abrir una casilla
+	 * bomba en un tablero unico es igual a los valores de bomba.
+	 */
 	@Test
 	public void testOpenBombEnUnBoardDeUnaSquare() {
-		/*
-		 * Es genera un board 1x1 i es mira de obrir la bomba que hi ha
-		 */
 		MockBoard board = new MockBoard();
 		board.col = 1;
 		board.rows = 1;
@@ -78,11 +99,14 @@ public class TestSquare {
 	 * Testos que comproven que el valor que te una casella (num de mines aprop) és el correcte
 	 */
 
+	/*
+	 * TDD. Caja negra. Se utiliza un Mock de board. Se crea un mock de board con un tablero 
+	 * 3x3 con 3 bombas y abrimos la casilla del medio para obtener su valor. Este test está 
+	 * dentro de la partición equivalente de los datos de salida: de 0 a 8
+	 */
 	@Test
 	public void testValorCasellaNum() {
-		/*
-		 * Generem un Board 3x3 i posem la casella de test al mig, aquesta te un total de 3 mines al costat
-		 */
+		
 		MockBoard board = new MockBoard();
 		board.col = 3;
 		board.rows = 3;
@@ -99,12 +123,13 @@ public class TestSquare {
 		assertEquals(3, testedSquare.getValue());
 	}
 	
-	
+	/*
+	 * TDD. Caja negra. Se utiliza un Mock de board. Se crea un mock de board con un tablero 
+	 * 3x3 con 0 bombas y abrimos la casilla del medio para obtener su valor. Este test comprueba
+	 * la frontera inferior (valor 0) de la particion equivalente de los datos de salida: de 0 a 8.
+	 */
 	@Test
 	public void testValorCasellaNumSenseBombes() {
-		/*
-		 * Generem un Board 3x3 i posem la casella de test al mig, aquesta te un total de 0 mines al costat. Cas frontera
-		 */
 		MockBoard board = new MockBoard();
 		board.col = 3;
 		board.rows = 3;
@@ -119,11 +144,13 @@ public class TestSquare {
 		assertEquals(0, testedSquare.getValue());
 	}
 	
+	/*
+	 * TDD. Caja negra. Se utiliza un Mock de board. Se crea un mock de board con un tablero 
+	 * 3x3 con 8 bombas y abrimos la casilla del medio para obtener su valor. Este test comprueba
+	 * la frontera superior (valor 8) de la particion equivalente de los datos de salida: de 0 a 8.
+	 */
 	@Test
 	public void testValorCasellaNumNomesBombes() {
-		/*
-		 * Generem un Board 3x3 i posem la casella de test al mig, aquesta te un total de 8 mines al costat. Cas frontera
-		 */
 		MockBoard board = new MockBoard();
 		board.col = 3;
 		board.rows = 3;
@@ -139,6 +166,11 @@ public class TestSquare {
 		assertEquals(8, testedSquare.getValue());
 	}
 	
+	/*
+	 * TDD. Caja negra. Se utiliza un Mock de board. Se crea un mock de board con un tablero 
+	 * 3x3 con 1 bomba y abrimos la casilla del medio para obtener su valor. Este test comprueba
+	 * el límite inferior interno (valor 1) de la particion equivalente de los datos de salida: de 0 a 8.
+	 */
 	@Test
 	public void testValorCasellaNumUnaBombes() {
 		/*
@@ -160,11 +192,13 @@ public class TestSquare {
 		assertEquals(1, testedSquare.getValue());
 	}
 	
+	/*
+	 * TDD. Caja negra. Se utiliza un Mock de board. Se crea un mock de board con un tablero 
+	 * 3x3 con 7 bombas y abrimos la casilla del medio para obtener su valor. Este test comprueba
+	 * el límite superior interno (valor 7) de la particion equivalente de los datos de salida: de 0 a 8.
+	 */
 	@Test
 	public void testValorCasellaNumSetBombes() {
-		/*
-		 * Generem un Board 3x3 i posem la casella de test al mig, aquesta te un total de 7 mines al costat. Cas limit
-		 */
 		MockBoard board = new MockBoard();
 		board.col = 3;
 		board.rows = 3;
@@ -181,11 +215,13 @@ public class TestSquare {
 		assertEquals(7, testedSquare.getValue());
 	}
 	
+	/*
+	 * TDD. Caja blanca. Se utiliza un Mock de board. Se crea un mock de board con un tablero 
+	 * 3x3 con 3 bombas y abrimos la casilla superior central para obtener su valor. Este test comprueba,
+	 * sabiendo la implementación interna, que el método calcula el valor correcto sin dar excepciones.
+	 */
 	@Test
 	public void testValorCasellaNumEnUnCostat() {
-		/*
-		 * Generem un Board 3x3 i posem la casella de test al centre superior, aquesta te un total de 2 mines al costat.
-		 */
 		MockBoard board = new MockBoard();
 		board.col = 3;
 		board.rows = 3;
@@ -202,11 +238,13 @@ public class TestSquare {
 		assertEquals(2, testedSquare.getValue());
 	}
 	
+	/*
+	 * TDD. Caja blanca. Se utiliza un Mock de board. Se crea un mock de board con un tablero 
+	 * 3x3 con 3 bombas y abrimos la casilla superior izquierda para obtener su valor. Este test comprueba,
+	 * sabiendo la implementación interna, que el método calcula el valor correcto sin dar excepciones.
+	 */
 	@Test
 	public void testValorCasellaNumEnUnaCantonada() {
-		/*
-		 * Generem un Board 3x3 i posem la casella de test a la cantonada superior esquerre, aquesta te un total de 1 mina al costat.
-		 */
 		MockBoard board = new MockBoard();
 		board.col = 3;
 		board.rows = 3;
@@ -223,11 +261,13 @@ public class TestSquare {
 		assertEquals(1, testedSquare.getValue());
 	}
 	
+	/*
+	 * TDD. Caja blanca. Se utiliza un Mock de board. Se crea un mock de board con un tablero 
+	 * 3x3 con 4 bombas y abrimos la casilla inbferior derecha para obtener su valor. Este test comprueba,
+	 * sabiendo la implementación interna, que el método calcula el valor correcto sin dar excepciones.
+	 */
 	@Test
 	public void testValorCasellaNumEnUnaCantonadaInferior() {
-		/*
-		 * Generem un Board 3x3 i posem la casella de test a la cantonada inferior dreta, aquesta te un total de 2 mina al costat.
-		 */
 		MockBoard board = new MockBoard();
 		board.col = 3;
 		board.rows = 3;
@@ -245,7 +285,7 @@ public class TestSquare {
 	}
 	
 	/*
-	 * Conjunt de testos que comproven que si obres una casella buida (valor = 0), s'obrin les del costat també.
+	 * Conjunto de tests que comprueban la abertura en cascada de las casillas vacias.
 	 */
 	
 	private Square[][] createBoard(Board board, int rows, int columns) {
@@ -261,11 +301,14 @@ public class TestSquare {
 		return squares;
 	}
 	
+	/**
+	 * TDD. Caja Negra, Se utiliza un mock de board. Crea un board 3x3 con una bomba en la esquina
+	 * inferior derecha. Abre al square de la esquina superior izquierda lo que hace que todas se abren
+	 * exceptuando la bomba. Podriamos decir que la particion equivalente en este test y los dos siguientes
+	 * son los datos de salida (se abren distintas casillas o ninguna otra). En este se comprueba el primer tipo
+	 */
 	@Test
 	public void testCasellesBuidesAdjacentsObertes() {
-		/*
-		 * Generem un board 3x3 i a la casella inferior dreta afegim una bomba. Obrim la de l'esquerra superior i s'haurien de obrir totes menys la bomba
-		 */
 		MockBoard board = new MockBoard();
 		board.col = 3;
 		board.rows = 3;
@@ -285,11 +328,13 @@ public class TestSquare {
 		}
 	}
 	
+	/**
+	 * TDD. Caja Negra, Se utiliza un mock de board. Crea un board 3x3 con una bomba en la esquina
+	 * inferior derecha. Abre la square central lo que hace que ninguna otra square tenga que abrirse.
+	 * Respecto a la particion comentada anteriormente, en este se comprueba el segundo tipo
+	 */
 	@Test
 	public void testCasellesBuidesAdjacentsObertesClicantNum() {
-		/*
-		 * Generem un board 3x3 i a la casella inferior dreta afegim una bomba. Obrim la del centre i s'haurien de obrir nomes la del centre
-		 */
 		MockBoard board = new MockBoard();
 		board.col = 3;
 		board.rows = 3;
@@ -309,11 +354,13 @@ public class TestSquare {
 		}
 	}
 	
+	/**
+	 * TDD. Caja Negra, Se utiliza un mock de board. Crea un board 3x3 con una bomba en la esquina
+	 * inferior derecha. Abre la square bomba lo que hace que ninguna otra square tenga que abrirse.
+	 * Respecto a la particion comentada anteriormente, en este se comprueba el segundo tipo
+	 */
 	@Test
 	public void testCasellesBuidesAdjacentsObertesClicantBomba() {
-		/*
-		 * Generem un board 3x3 i a la casella inferior dreta afegim una bomba. Obrim la Bomba i s'hauria de obrir nomes la Bomba
-		 */
 		MockBoard board = new MockBoard();
 		board.col = 3;
 		board.rows = 3;
@@ -334,14 +381,15 @@ public class TestSquare {
 	}
 	
 	/*
-	 * Testos que comproven el mètode de afegir banderes
+	 * Testos que comprueban el método de añadir banderas
 	 */
 	
+	/**
+	 * TDD. Caja Negra. Comprueba que al llamar el metodo de cambiar bandera (changeIsFlagged), este
+	 * haga el canvio de estado.
+	 */
 	@Test
 	public void testSetBandera() {
-		/*
-		 * Test que comprova si al afegir una bandera o al treure-la canvia el seu estat
-		 */
 		Square square = new Square();
 		assertFalse(square.isFlagged());
 		square.changeIsFlagged();
@@ -350,11 +398,13 @@ public class TestSquare {
 		assertFalse(square.isFlagged());
 	}
 	
+	/**
+	 * TDD. Caja Negra. Comprueba que al llamar el metodo de cambiar bandera (changeIsFlagged), en una 
+	 * Square abierta, esta no cambie de estado. Podriamos decir que forma parte de la particion equivalente
+	 * donde los datos de entrada son Squares abiertas y cerradas.
+	 */
 	@Test
 	public void testFlagAnOpenSquare() {
-		/*
-		 * Test que comprova que una cel·la no es pugui marcar amb una bandera si està obert
-		 */
 		Square square = new Square();
 		assertFalse(square.isFlagged());
 		square.open();
@@ -362,22 +412,24 @@ public class TestSquare {
 		assertFalse(square.isFlagged());
 	}
 	
+	/**
+	 * TDD. Caja Negra. Comprueba que al llamar el metodo de abrir en una Square con bandera, esta
+	 * no se abra.
+	 */
 	@Test
 	public void testOpenFlaggedSquare() {
-		/*
-		 * Test que comprova que una cel·la no s'obri al tenir una bandera
-		 */
 		Square square = new Square();
 		square.changeIsFlagged();
 		square.open();
 		assertFalse(square.getIsOpen());
 	}
 	
+	/**
+	 * TDD. Caja Negra. Comprueba que al llamar el metodo de abrir en una Square bomba con bandera, esta
+	 * no se abra.
+	 */
 	@Test
 	public void testOpenFlaggedBomb() {
-		/*
-		 * Test que comprova que una cel·la bomba no s'obri al tenir una bandera
-		 */
 		Square square = new Square();
 		square.setBomb();
 		square.changeIsFlagged();
@@ -385,12 +437,13 @@ public class TestSquare {
 		assertFalse(square.getIsOpen());
 	}
 	
+	/**
+	 * TDD. Caja Negra. Se utiliza un mock de board. Crea un board 3x3 con una bomba en la esquina
+	 * inferior derecha. Añadimos una bandera en la casilla central. Abre la square de la esquina superior izquierda
+	 * lo que hace que se abran todas menos la bomba y la casilla con bandera
+	 */
 	@Test
 	public void testOpenEmptySquareInBoardWithFlag() {
-		/*
-		 * Generem un board 3x3 i a la casella inferior dreta afegim una bomba. Afegim una bandera a la cel·la del centre i obrim la de l'esquerra superior.
-		 * S'han de obrir totes menys la bomba i la de la bandera
-		 */
 		MockBoard board = new MockBoard();
 		board.col = 3;
 		board.rows = 3;
@@ -413,12 +466,13 @@ public class TestSquare {
 		}
 	}
 	
+	/**
+	 * TDD. Caja Negra. Se utiliza un mock de board. Crea un board 3x3 con una bomba en la esquina
+	 * inferior derecha. Añadimos una bandera en la casilla izquierda superior. Abre la square de la esquina superior izquierda
+	 * lo que hace que ninguna casilla se abra
+	 */
 	@Test
 	public void testOpenEmptySquareFlaggedInBoard() {
-		/*
-		 * Generem un board 3x3 i a la casella inferior dreta afegim una bomba. Afegim una bandera a la cel·la de l'esquerra superior i la obrim.
-		 * No s'ha de obrir cap.
-		 */
 		MockBoard board = new MockBoard();
 		board.col = 3;
 		board.rows = 3;
@@ -435,6 +489,17 @@ public class TestSquare {
 		}
 	}
 	
+	/*
+	 * Conjunto de tests que comprueban el estado de las Squares.
+	 * En estos tests tenemos como particion equivalente los distintos tipos de squares:
+	 * Sin abrir, abierto bomba, abierto valor y bandera como tipo de entrada. De salida
+	 * deben generarse los mismos tipos 
+	 */
+	
+	/**
+	 * TDD. Caja Negra. Crea una Square bomba y se comprueba que esta devuelva la enumeracion
+	 * correcta.
+	 */
 	@Test
 	public void testGetStatusBomb() {
 		Square s = new Square();
@@ -448,6 +513,11 @@ public class TestSquare {
 		assertEquals(aux,real);
 	}
 	
+	
+	/**
+	 * TDD. Caja Negra. Crea una Square normal y se le añade una bomba, se comprueba que esta devuelva la enumeracion
+	 * correcta.
+	 */
 	@Test
 	public void testGetStatusFlagged() {
 		Square s = new Square();
@@ -461,6 +531,10 @@ public class TestSquare {
 		assertEquals(aux,real);
 	}
 	
+	/**
+	 * TDD. Caja Negra. Crea una Square normal y se abre, se comprueba que esta devuelva la enumeracion
+	 * correcta.
+	 */
 	@Test
 	public void testGetStatusOpen() {
 		Square s = new Square();
@@ -470,6 +544,10 @@ public class TestSquare {
 		assertEquals(aux, real);
 	}
 	
+	/**
+	 * Caja Blanca. Se utiliza un mock de board. Tipo decicision coverage. Se comprueba que se pasen
+	 * por todas las decisiones en la funcionalidad de devolver su estado.
+	 */
 	@Test
 	public void testGetStatusDecisionCoverage() {
 		MockBoard board = new MockBoard();
@@ -487,6 +565,12 @@ public class TestSquare {
 		assertEquals(SquareStatus.BOMB, squares[2][2].getStatus());
 	}
 	
+	/**
+	 * Caja Blanca. Se utiliza un mock de board. Tipo decicision + condition coverage. Se comprueba
+	 * que se pasen por todas las condiciones posibles en la funcionalidad de abrir una casilla.
+	 * Para eso creamos un tablero 3x3 añadiendo una bomba en la esquina inferior derecha y abrimos
+	 * la casilla superior izquierda. Esto hace que se pasen por todas las coniciones
+	 */
 	@Test
 	public void testOpenDecisionCoverage() {
 		Square s = new Square();

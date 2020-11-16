@@ -20,7 +20,7 @@ public class RView implements View {
 	private Container grid;
 	private static final int[] ROWS_NUM = {8, 14, 20};
 	private static final int[] COLS_NUM = {10, 18, 24};
-	private int dificulty;
+	private int dificulty = 1;
 	private static final int SIZE = 50;
 	
 	
@@ -73,7 +73,7 @@ public class RView implements View {
 				   null,  
 				   new Object[] { "facil", "nomal", "dificil" },
 				   "normal");
-		return seleccio;
+		return seleccio<0 || seleccio>2 ? this.dificulty : seleccio;
 	}
 	
 	private void createButtons() {
