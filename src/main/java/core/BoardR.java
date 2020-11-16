@@ -80,8 +80,10 @@ public class BoardR implements Board{
 	}
 	
 	public SquareStatus getStatus(int i, int j) {
-		SquareStatus aux = board[i][j].getStatus();
-		return aux;
+		if(i > -1 && i < rows && j < cols && j > -1) {
+			return board[i][j].getStatus();
+		}
+		return null;
 	}
 	
 	public Square getSquare(int i, int j) { 
@@ -100,7 +102,9 @@ public class BoardR implements Board{
 	}
 	
 	public void changeFlag(int i, int j) {
-		board[i][j].changeIsFlagged();
+		if(i > -1 && i < rows && j < cols && j > -1) {
+			board[i][j].changeIsFlagged();
+		}
 	}
 	
 	public void minusPendingSquares() {

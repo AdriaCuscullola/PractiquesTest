@@ -489,6 +489,8 @@ public class TestSquare {
 	
 	@Test
 	public void testOpenDecisionCoverage() {
+		Square s = new Square();
+		s.open();
 		MockBoard board = new MockBoard();
 		boolean[][] results = {{false, true, true}, {true, true, true}, {true, true, true}};
 		int[][] values = {{0, 0, 0}, {0, 1, 1}, {0, 1, -1}};

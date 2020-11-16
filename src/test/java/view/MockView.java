@@ -11,6 +11,7 @@ import core.Square;
 import view.View;
 
 public class MockView implements View{
+	private int dificulty;
 	@Override
 	public void finish(boolean guanyat) {
 		// TODO Auto-generated method stub
@@ -74,6 +75,16 @@ public class MockView implements View{
 	public void printaTauler(Square[][] tauler) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public void start() {
+		game.resetGame(dificulty);
+		
+	}
+	
+	public void addDif(int dif) {
+		this.dificulty = dif;
 	}
 
 }

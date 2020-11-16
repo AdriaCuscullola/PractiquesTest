@@ -177,7 +177,29 @@ public class TestBoard {
 	}
 	
 	@Test
-	public void testGetStatus() { //TDD. Caja Negra. Comprueba si el getStatus devuelve el ENUM indicado.
+	public void testSetFlagFronteres() { //TDD. Caja Negra. Comprueba si se va cambiando correctamente el estado de flag de la casilla correspondiente en las casillas frontera.
+		Board b = new BoardR(5, 6, 10);
+		b.initialize(4, 3, 55555);
+		Square[][] R = b.getBoard();
+		b.openSquare(4, 3);
+		b.changeFlag(-1,0);
+		b.changeFlag(0,-1);
+		b.changeFlag(5,0);
+		b.changeFlag(0,6);
+		b.changeFlag(1,0);
+		assertEquals(true, R[1][0].isFlagged());
+		b.changeFlag(0,1);
+		assertEquals(true, R[0][1].isFlagged());
+		b.changeFlag(4,5); //Valor frontera
+		assertEquals(true, R[4][5].isFlagged());
+		b.changeFlag(3,5);
+		assertEquals(true, R[3][5].isFlagged());
+		b.changeFlag(3,4);
+		assertEquals(true, R[3][4].isFlagged());
+	}
+	
+	@Test
+	public void testGetStatus() { //TDD. Caja Negra. Comprueba si el getStatus devuelve el ENUM indicado de cada casilla dependiendo de la acción que se ha hecho en esta.
 		Board b = new BoardR(5, 6, 10);
 		b.initialize(4, 3, 55555);
 		Square[][] R = b.getBoard();
@@ -204,7 +226,45 @@ public class TestBoard {
 	}
 	
 	@Test
-	public void testLimitFrontera() { //TDD. Caja Negra. Comprueba los valores limites del tablero.
+	public void testGetStatusLimitsFrontera() { //TDD. Caja Negra. Se utiliza una seed. Comprueba las casillas frontera no se abran cuando abres una casilla vacia.
+		Board b = new BoardR(5, 6, 10);
+		b.initialize(4, 3, 55555);
+		Square[][] R = b.getBoard();
+		
+		b.openSquare(4, 3);
+
+		SquareStatus status = b.getStatus(-1,0);
+		status = b.getStatus(0,-1);
+		status = b.getStatus(5,3);
+		status = b.getStatus(2, 6);
+		
+		status = b.getStatus(0, 0);
+		assertEquals(SquareStatus.NOT_OPEN, status);
+		status = b.getStatus(1, 1);
+		assertEquals(SquareStatus.NOT_OPEN, status);
+		
+		status = b.getStatus(4, 5);
+		assertEquals(SquareStatus.NOT_OPEN, status);
+		status = b.getStatus(3, 2);
+		assertEquals(SquareStatus.NOT_OPEN, status);
+		status = b.getStatus(2, 4);
+		assertEquals(SquareStatus.NOT_OPEN, status);
+		
+		
+	}
+	
+	/*Tauler amb seed: = 55555
+	oxoooo |0 
+	oooooo |1
+	oxoooo |2
+	ooxooo |3
+	ooooox |4
+	------
+	012345
+	*/
+	
+	@Test
+	public void testLimitFrontera() { //TDD. Caja Negra. Comprueba que se abran correctamente los valores limites del tablero.
 		Board b = new BoardR(5, 6, 10);
 		b.openSquare(-1, -1);
 		int pending = b.getPendingSquares();
@@ -221,6 +281,27 @@ public class TestBoard {
 		b.openSquare(-1,6);
 		pending = b.getPendingSquares();
 		assertEquals(20, pending);
+		
+		b = new BoardR(5, 6, 4);
+		b.initialize(4, 3, 55555);
+		b.openSquare(4, 3);
+		
+		b.openSquare(1, 0);
+		pending = b.getPendingSquares();
+		assertEquals(24, pending);
+		
+		b.openSquare(3, 5);
+		pending = b.getPendingSquares();
+		assertEquals(23, pending);
+		
+		b.openSquare(1, 1);
+		pending = b.getPendingSquares();
+		assertEquals(22, pending);
+		
+		b.openSquare(3, 4);
+		pending = b.getPendingSquares();
+		assertEquals(21, pending);
+		
 	}
 	
 	@Test

@@ -37,7 +37,10 @@ public class RView implements View {
         frame.setLayout(new BorderLayout());
         frame.setLocationRelativeTo(null);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        int dificulty = showMessage("Selecciona una dificultat", "MineSweeper", JOptionPane.QUESTION_MESSAGE);
+	}
+	
+	public void start() {
+		int dificulty = showMessage("Selecciona una dificultat", "MineSweeper", JOptionPane.QUESTION_MESSAGE);
         controller.resetGame(dificulty);
         rows = ROWS_NUM[dificulty];
         cols = COLS_NUM[dificulty];
@@ -55,8 +58,6 @@ public class RView implements View {
         frame.setSize(SIZE*cols, SIZE*rows);
         frame.setLayout(new BorderLayout());
 		createButtons();
-		
-        
         frame.setLocationRelativeTo(null);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);

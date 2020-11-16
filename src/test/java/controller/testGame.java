@@ -105,7 +105,7 @@ public class testGame {
 	012345
 	*/
 	@Test
-	public void testJocAcabat() { //TDD. Caja Negra. Se utiliza un mock de vista. Comoprueba que el tablero finalize correctamente cuando la vista así se lo indica.
+	public void testJocAcabat() { //TDD. Caja Negra y Caja Blanca. Se utiliza un mock de vista. Comoprueba que el tablero finalize correctamente cuando la vista así se lo indica.
 		Game g = new Game(12,10,119);
 		MockView v = new MockView(g);
 		g.setView(v);
@@ -127,7 +127,37 @@ public class testGame {
 	}
 	
 	@Test
-	public void testResetGame() { //TDD. Caja Negra. Se utiliza un mock de vista. Comprueba que el juego se resetee correctamente cuando la vista así se lo indique.
+	public void testGameInici() { //TDD. Caja Negra. Se usa un mock de la vista. Comprueba que el controlador  se inicie correctamente junto con la vista.
+		Game g = new Game();
+		MockView v = new MockView(g);
+		v.addDif(0);
+		g.setView(v);
+		g.start();
+		Board b = g.getBoard();
+		assertEquals(10, b.getCols());
+		assertEquals(8, b.getRows());
+		
+		g = new Game();
+		v = new MockView(g);
+		v.addDif(1);
+		g.setView(v);
+		g.start();
+		b = g.getBoard();
+		assertEquals(18, b.getCols());
+		assertEquals(14, b.getRows());
+		
+		g = new Game();
+		v = new MockView(g);
+		v.addDif(2);
+		g.setView(v);
+		g.start();
+		b = g.getBoard();
+		assertEquals(24, b.getCols());
+		assertEquals(20, b.getRows());
+	}
+	
+	@Test
+	public void testResetGame() {//TDD. Caja Negra. Se utiliza un mock de vista. Comprueba que el juego se resetee correctamente cuando la vista así se lo indique.
 		Game g = new Game(12,10,119);
 		g.openBoard(3, 3);
 		Board b = g.getBoard();
@@ -157,4 +187,5 @@ public class testGame {
 		assertEquals(24, b.getCols());
 		
 	}	
+	
 }
