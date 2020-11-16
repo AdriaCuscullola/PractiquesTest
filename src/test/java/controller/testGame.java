@@ -16,7 +16,7 @@ public class testGame {
 
 
 	@Test
-	public void testInitializeBoard() { //
+	public void testInitializeBoard() { //TDD. Caja Negra. Comprueba que el tablero se inicialize correctamente.
 		Game g = new Game(12, 10, 20);
 		/*View view = new MockView();
 		g.setView(view);
@@ -35,7 +35,7 @@ public class testGame {
 	}
 	
 	@Test
-	public void testOpenBoard() {
+	public void testOpenBoard() { //TDD. Caja Negra. Comprueba que la función open funcione correctamente.
 		Game g = new Game(12, 10, 20);
 		Board b = g.getBoard();
 		g.openBoard(3,3);
@@ -50,7 +50,7 @@ public class testGame {
 	}
 	
 	@Test
-	public void testFlagBoard() {
+	public void testFlagBoard() { //TDD. Caja Negra. Comprueba que la bandera se ponga correctamente.
 		Game g = new Game(12, 10, 20);
 		Board b = g.getBoard();
 		g.flagBoard(4,4);
@@ -60,7 +60,7 @@ public class testGame {
 	}
 	
 	@Test
-	public void testLeftClick() {
+	public void testLeftClick() { //TDD. Caja Negra. Se utiliza un mock de vista. Compruba que el click izquierdo se haga correctamente. (abra una casilla).
 		Game g = new Game(12, 10, 20);
 		MockView v = new MockView(g);
 		g.setView(v);
@@ -72,7 +72,7 @@ public class testGame {
 	}
 	
 	@Test
-	public void testRightClick() {
+	public void testRightClick() { //TDD. Caja Negra. //TDD. Caja Negra. Se utiliza un mock de vista. Compruba que el click derecho se haga correctamente. (ponga una bandera).
 		Game g = new Game(12, 10, 20);
 		MockView v = new MockView(g);
 		g.setView(v);
@@ -84,7 +84,7 @@ public class testGame {
 	}
 	
 	@Test
-	public void testMiddleClick() {
+	public void testMiddleClick() { //TDD. Caja Negra. //TDD. Caja Negra. Se utiliza un mock de vista.Compruba que el click del medio no haga nada.
 		Game g = new Game(12, 10, 20);
 		MockView v = new MockView(g);
 		g.setView(v);
@@ -105,7 +105,7 @@ public class testGame {
 	012345
 	*/
 	@Test
-	public void testJocAcabat() {
+	public void testJocAcabat() { //TDD. Caja Negra y Caja Blanca. Se utiliza un mock de vista. Comoprueba que el tablero finalize correctamente cuando la vista así se lo indica.
 		Game g = new Game(12,10,119);
 		MockView v = new MockView(g);
 		g.setView(v);
@@ -127,7 +127,7 @@ public class testGame {
 	}
 	
 	@Test
-	public void testGameInici() {
+	public void testGameInici() { //TDD. Caja Negra. Se usa un mock de la vista. Comprueba que el controlador  se inicie correctamente junto con la vista.
 		Game g = new Game();
 		MockView v = new MockView(g);
 		v.addDif(0);
@@ -157,7 +157,7 @@ public class testGame {
 	}
 	
 	@Test
-	public void testResetGame() {
+	public void testResetGame() {//TDD. Caja Negra. Se utiliza un mock de vista. Comprueba que el juego se resetee correctamente cuando la vista así se lo indique.
 		Game g = new Game(12,10,119);
 		g.openBoard(3, 3);
 		Board b = g.getBoard();

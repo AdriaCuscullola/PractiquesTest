@@ -7,7 +7,7 @@ import org.junit.Test;
 public class TestBoard {
 		
 	@Test
-	public void testInitialize() { //comprova que les dades d'entrada s'inicialitzin.
+	public void testInitialize() { //TDD. Caja Negra. Comprueba que los datos de entrada se incializen.
 		Board b = new BoardR(5, 6, 10);
 		int nbombs = b.getNBombs();
 		int rows = b.getRows();
@@ -22,7 +22,7 @@ public class TestBoard {
 	}
 	
 	@Test
-	public void testOpen() { //comprova el boolea de l'initialized.
+	public void testOpen() { //TDD. Caja Negra.Comprueba que se haya inizializado el talbero a partir de un booleano.
 		Board b = new BoardR(5, 6, 10);
 		
 		b.openSquare(4, 3);
@@ -32,7 +32,7 @@ public class TestBoard {
 	}	
 	
 	@Test
-	public void testInitalized() { //comprova si s'han generat les bombes demanades en el tauler (per tant, s'ha generat el tauler correctament).
+	public void testInitalized() { //TDD. Caja Negra. Comprueba si se han generado las bombas solicitadas en el tablero (por lo tanto, se ha generado el tablero correctamente).
 		Board b = new BoardR(5, 6, 10);
 		
 		b.openSquare(4, 3);
@@ -49,7 +49,7 @@ public class TestBoard {
 	}
 	
 	@Test
-	public void testInitialized0Bombes() { //comprovació valor limit 0 bombes.
+	public void testInitialized0Bombes() { //TDD. Caja Negra. Comprueba valor limite 0 bombas.
 		Board b = new BoardR(5, 6, 0);
 		
 		b.openSquare(4, 3);
@@ -66,7 +66,7 @@ public class TestBoard {
 	}
 	
 	@Test
-	public void testInitializedMaximBombes() { //comprovació valor limit maxim bombes.
+	public void testInitializedMaximBombes() { //TDD. Caja Negra. Comprueba valor limite del maximo de bombas.
 		Board b = new BoardR(5, 6, 29);
 		
 		b.openSquare(4, 3);
@@ -83,7 +83,7 @@ public class TestBoard {
 	}
 	
 	@Test
-	public void testInitializedLimitBombes() { //comprovació valor limit ficant més bombes de les possibles.
+	public void testInitializedLimitBombes() { //TDD. Caja Negra. Comprobación valor límite metiendo más bombas de las posibles.
 		Board b = new BoardR(5, 6, 30);
 		
 		b.openSquare(4, 3);
@@ -119,7 +119,7 @@ public class TestBoard {
 	012345
 	*/
 	@Test
-	public void testPendingSquares() { //test que comprova quantes cel·les buides queden per obrir.
+	public void testPendingSquares() { //TDD. Caja Negra. Test que comprueba cuántas celdas vacías quedan por abrir.
 		Board b = new BoardR(5, 6, 4);
 		int pending = b.getPendingSquares();
 		assertEquals(26, pending);
@@ -140,7 +140,7 @@ public class TestBoard {
 	}
 	
 	@Test
-	public void testOpenSquares() { //comprova si s'obre bé la casella (retorna 0), si ja s'ha obert(retorna 1) o si hi ha una bandera(retorna 2).
+	public void testOpenSquares() { //TDD. Caja Negra. Comprueba si se abre bien la casilla (devuelve 0), si ya se ha abierto (devuelve 1) o si hay una bandera (devuelve 2).
 		Board b = new BoardR(5, 6, 10);
 		boolean isOpen = b.getSquareIsOpen(4,3);
 		assertEquals(false, isOpen);
@@ -150,7 +150,7 @@ public class TestBoard {
 	}
 	
 	@Test 
-	public void testIsBomb() { //comprova si es fica la bomba correctament i si al obrir la casella de la bomba retorna bomba.
+	public void testIsBomb() { //TDD. Caja Negra. Comprueba si se mete la bomba correctamente y si al abrir la casilla de la bomba devuelve bomba.
 		Board c = new BoardR(1, 2, 1);
 		Square[][] R = c.getBoard();
 		boolean bomb = R[0][0].getIsBomb();
@@ -161,7 +161,7 @@ public class TestBoard {
 	}
 	
 	@Test
-	public void testSetFlag() { //comprova si es va canviant correctament l'estat de flag de la casella.
+	public void testSetFlag() { //TDD. Caja Negra. Comprueba si se va cambiando correctamente el estado de flag de la casilla.
 		Board b = new BoardR(5, 6, 10);
 		b.initialize(4, 3, 55555);
 		Square[][] R = b.getBoard();
@@ -177,7 +177,7 @@ public class TestBoard {
 	}
 	
 	@Test
-	public void testSetFlagFronteres() { //comprova si es va canviant correctament l'estat de flag de la casella.
+	public void testSetFlagFronteres() { //TDD. Caja Negra. Comprueba si se va cambiando correctamente el estado de flag de la casilla correspondiente en las casillas frontera.
 		Board b = new BoardR(5, 6, 10);
 		b.initialize(4, 3, 55555);
 		Square[][] R = b.getBoard();
@@ -199,7 +199,7 @@ public class TestBoard {
 	}
 	
 	@Test
-	public void testGetStatus() { //comprova si el getStatus retorna el ENUM indicat.
+	public void testGetStatus() { //TDD. Caja Negra. Comprueba si el getStatus devuelve el ENUM indicado de cada casilla dependiendo de la acción que se ha hecho en esta.
 		Board b = new BoardR(5, 6, 10);
 		b.initialize(4, 3, 55555);
 		Square[][] R = b.getBoard();
@@ -226,7 +226,7 @@ public class TestBoard {
 	}
 	
 	@Test
-	public void testGetStatusLimitsFrontera() { //comprova si el getStatus retorna el ENUM indicat.
+	public void testGetStatusLimitsFrontera() { //TDD. Caja Negra. Se utiliza una seed. Comprueba las casillas frontera no se abran cuando abres una casilla vacia.
 		Board b = new BoardR(5, 6, 10);
 		b.initialize(4, 3, 55555);
 		Square[][] R = b.getBoard();
@@ -264,7 +264,7 @@ public class TestBoard {
 	*/
 	
 	@Test
-	public void testLimitFrontera() {
+	public void testLimitFrontera() { //TDD. Caja Negra. Comprueba que se abran correctamente los valores limites del tablero.
 		Board b = new BoardR(5, 6, 10);
 		b.openSquare(-1, -1);
 		int pending = b.getPendingSquares();
@@ -305,7 +305,7 @@ public class TestBoard {
 	}
 	
 	@Test
-	public void loopTestingInitialize() {
+	public void loopTestingInitialize() { //TDD. Caja Blanca. Recorre todos los caminos de inizialicación del tablero con 0, 1, 15, max-1 i max bombas.
 		Board b = new BoardR(5, 6, 0);
 		b.initialize(0, 0, 0);
 		Square[][] T = b.getBoard();
@@ -374,7 +374,7 @@ public class TestBoard {
 	}
 	
 	@Test
-	public void conditionCoverageOpen() {
+	public void conditionCoverageOpen() { //TDD. Caja Blanca. Recorre todos los caminos posibles de las condiciones del openSquare para poder hacer un condition Coverage.
 		Board b = new BoardR(5, 6, 29);
 		b.openSquare(-1, -1);
 		b.openSquare(-1, 7);
