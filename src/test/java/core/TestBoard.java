@@ -225,6 +225,34 @@ public class TestBoard {
 		assertEquals(aux4, real4);
 	}
 	
+	@Test
+	public void testGetStatusLimitsFrontera() { //comprova si el getStatus retorna el ENUM indicat.
+		Board b = new BoardR(5, 6, 10);
+		b.initialize(4, 3, 55555);
+		Square[][] R = b.getBoard();
+		
+		b.openSquare(4, 3);
+
+		SquareStatus status = b.getStatus(-1,0);
+		status = b.getStatus(0,-1);
+		status = b.getStatus(5,3);
+		status = b.getStatus(2, 6);
+		
+		status = b.getStatus(0, 0);
+		assertEquals(SquareStatus.NOT_OPEN, status);
+		status = b.getStatus(1, 1);
+		assertEquals(SquareStatus.NOT_OPEN, status);
+		
+		status = b.getStatus(4, 5);
+		assertEquals(SquareStatus.NOT_OPEN, status);
+		status = b.getStatus(3, 2);
+		assertEquals(SquareStatus.NOT_OPEN, status);
+		status = b.getStatus(2, 4);
+		assertEquals(SquareStatus.NOT_OPEN, status);
+		
+		
+	}
+	
 	/*Tauler amb seed: = 55555
 	oxoooo |0 
 	oooooo |1
