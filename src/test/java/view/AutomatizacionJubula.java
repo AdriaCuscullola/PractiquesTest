@@ -36,13 +36,26 @@ public class AutomatizacionJubula {
 				columnas = new int[] {2, 2, 3, 3, 2, 1};
 				acciones = new int[] {1, 1, 1, 1, 3, 1};
 				break;
-			/*case 3: 
-				// ganar partida version 2 sin uso de banderas
+			case 3: 
+				// ganar partida version 2 con uso de banderas
+				files = new int[] 	 {6,7,7,6,7,6,6,7,4,6,7,7,7,6,6,3,5,5,4,4,3,2,0,1,3,2,1,0,5,1,0,4,2,5,5,3,4,2,0,4,0,0};
+				columnas = new int[] {0,0,6,1,1,3,2,5,7,4,4,3,2,6,5,5,6,5,6,5,7,7,6,4,6,6,6,5,3,5,4,2,5,4,2,4,3,4,0,4,2,1};
+				acciones = new int[] {1, 1, 3, 3, 1, 1, 1, 1, 3, 3, 1, 1, 1, 1, 1, 3, 1, 1, 1, 1, 1, 3, 1, 3, 1, 1, 1, 1, 1, 1, 3, 3, 1, 1, 1, 1, 1, 1, 3, 1, 1, 1};
+				break;
+			case 4:
+				// perder partida version 2 con uso de banderas
+				files = new int[] {7,4,2,2,2,3,3};
+				columnas = new int[] {9,7,7,6,5,7,5};
+				acciones = new int[] {1,3,3,1,1,3,1};
+				break;
+			case 5:
+				// perder partida version 2 con uso de banderas
+				files = new int[] {1, 6, 7, 4, 6, 6};
+				columnas = new int[] {2, 1, 3, 3, 1, 1};
+				acciones = new int[] {3, 3, 3, 3, 3, 1};
 				break;
 			default:
-				// ganar partida version 2 sin uso de banderas
 				break;
-			*/
 		}
 		nAccion = 0;
 	}

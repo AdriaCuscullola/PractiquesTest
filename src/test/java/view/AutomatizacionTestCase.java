@@ -43,4 +43,49 @@ public class AutomatizacionTestCase {
 			autJubula.nextAction();
 		}
 	}
+	
+	@Test
+	public void partidaTerceraVersion() {
+		Game g = new Game();
+		GeneradorRandom random = new MockTestCase();
+		g.setRandom(random);
+		g.start();
+		AutomatizacionJubula autJubula = new AutomatizacionJubula();
+		// autJubula.simulaSeleccionDificultad();
+		autJubula.crearAcciones(3);
+		for(int i = 0; i < autJubula.numeroAcciones(); i++) {
+			g.mouseClicked(autJubula.simularClick(g));
+			autJubula.nextAction();
+		}
+	}
+	
+	@Test
+	public void partidaQuartaVersion() {
+		Game g = new Game();
+		GeneradorRandom random = new MockTestCase();
+		g.setRandom(random);
+		g.start();
+		AutomatizacionJubula autJubula = new AutomatizacionJubula();
+		// autJubula.simulaSeleccionDificultad();
+		autJubula.crearAcciones(4);
+		for(int i = 0; i < autJubula.numeroAcciones(); i++) {
+			g.mouseClicked(autJubula.simularClick(g));
+			autJubula.nextAction();
+		}
+	}
+	
+	@Test
+	public void partidaQuintaVersion() {
+		Game g = new Game();
+		GeneradorRandom random = new MockTestCase();
+		g.setRandom(random);
+		g.start();
+		AutomatizacionJubula autJubula = new AutomatizacionJubula();
+		// autJubula.simulaSeleccionDificultad();
+		autJubula.crearAcciones(5);
+		for(int i = 0; i < autJubula.numeroAcciones(); i++) {
+			g.mouseClicked(autJubula.simularClick(g));
+			autJubula.nextAction();
+		}
+	}
 }
