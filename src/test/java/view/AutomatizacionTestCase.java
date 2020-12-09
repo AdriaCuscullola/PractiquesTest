@@ -88,4 +88,19 @@ public class AutomatizacionTestCase {
 			autJubula.nextAction();
 		}
 	}
+	
+	@Test
+	public void partidaSextaVersion() {
+		Game g = new Game();
+		GeneradorRandom random = new MockTestCase();
+		g.setRandom(random);
+		g.start();
+		AutomatizacionJubula autJubula = new AutomatizacionJubula();
+		// autJubula.simulaSeleccionDificultad();
+		autJubula.crearAcciones(6);
+		for(int i = 0; i < autJubula.numeroAcciones(); i++) {
+			g.mouseClicked(autJubula.simularClick(g));
+			autJubula.nextAction();
+		}
+	}
 }
