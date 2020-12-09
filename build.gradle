@@ -29,3 +29,19 @@ dependencies {
     
     testCompile "org.mockito:mockito-core:2.+"
 }
+
+task customFatJar(type: Jar) {
+
+    manifest {
+
+        attributes 'Main-Class': 'client.Main'
+
+    }
+
+    baseName = 'all-in-one-jar'
+
+    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+
+    with jar
+
+}

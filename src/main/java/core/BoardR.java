@@ -1,6 +1,7 @@
 package core;
 
 import java.util.Random;
+import controller.GeneradorRandom;
 
 public class BoardR implements Board{
 	private int rows;
@@ -8,7 +9,12 @@ public class BoardR implements Board{
 	private int nBombs;
 	private boolean initialized = false;
 	private Square[][] board;
+	private GeneradorRandom bombas;
 	private int pendingSquares;
+	
+	public void setGenerador(GeneradorRandom i) {
+		this.bombas = i;
+	}
 	
 	public BoardR(int rows, int cols, int nBombs){
 		this.rows = rows;
@@ -46,25 +52,35 @@ public class BoardR implements Board{
 	
 	public void initialize(int i, int j, long seed) {
 		initialized = true;
-		Random rand;
-		if(seed != 0) {
-			rand = new Random(seed);
+		if(bombas != null) {
+			for (int it = 0; it < nBombs; it++) {
+				int row = bombas.nextFila(it);
+				int col = bombas.nextColumna(it);
+				board[row][col].setBomb();
+			}
 		}
 		else {
-			rand = new Random();
-		}
-		/*int maxBombs = (rows*cols)-1;
-		if(nBombs > maxBombs)
-			nBombs = maxBombs;*/
-		for (int it = 0; it < nBombs; it++) {
-			int row = rand.nextInt(rows);
-			int col = rand.nextInt(cols);
-			if((row == i) && (col == j)) {
-				it--;
+			// potser s'ha de passar en una funcio PRIVATE
+			Random rand;
+			if(seed != 0) {
+				rand = new Random(seed);
 			}
-			else{
-				if(!board[row][col].setBomb()) {
+			else {
+				rand = new Random();
+			}
+			/*int maxBombs = (rows*cols)-1;
+			if(nBombs > maxBombs)
+				nBombs = maxBombs;*/
+			for (int it = 0; it < nBombs; it++) {
+				int row = rand.nextInt(rows);
+				int col = rand.nextInt(cols);
+				if((row == i) && (col == j)) {
 					it--;
+				}
+				else{
+					if(!board[row][col].setBomb()) {
+						it--;
+					}
 				}
 			}
 		}

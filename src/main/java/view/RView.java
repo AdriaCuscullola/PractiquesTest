@@ -40,7 +40,7 @@ public class RView implements View {
 	}
 	
 	public void start() {
-		int dificulty = showMessage("Selecciona una dificultat", "MineSweeper", JOptionPane.QUESTION_MESSAGE);
+		int dificulty = 0; // showMessage("Selecciona una dificultat", "MineSweeper", JOptionPane.QUESTION_MESSAGE);
         controller.resetGame(dificulty);
         rows = ROWS_NUM[dificulty];
         cols = COLS_NUM[dificulty];

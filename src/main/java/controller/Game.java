@@ -22,6 +22,12 @@ public class Game implements GameInterface {
 	private static final int[] COLS_NUM = {10, 18, 24};
 	private static final int[] BOMBS_NUM = {10, 40, 99};
 	
+	private GeneradorRandom g;
+	
+	public void setRandom(GeneradorRandom i) {
+		this.g = i;
+	}
+	
 	public Game() {
 		view = new RView(this);
 	}
@@ -77,6 +83,7 @@ public class Game implements GameInterface {
 		col = COLS_NUM[dificulty];
 		bombs = BOMBS_NUM[dificulty];
 		this.board = new BoardR(row, col, bombs);
+		this.board.setGenerador(g);
 	}
 	
 	@Override
@@ -112,5 +119,9 @@ public class Game implements GameInterface {
 	@Override
 	public void mouseReleased(MouseEvent arg0) {
 		// TODO Auto-generated method stub	
+	}
+	
+	public View getView() {
+		return this.view;
 	}
 }

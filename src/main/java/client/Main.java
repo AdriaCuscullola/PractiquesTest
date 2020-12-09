@@ -1,3 +1,5 @@
+package client;
+
 import controller.Game;
 import controller.GeneradorRandom;
 import controller.MockTestCase;
