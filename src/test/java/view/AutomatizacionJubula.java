@@ -13,7 +13,7 @@ public class AutomatizacionJubula {
 	
 	private int[] files;
 	private int[] columnas;
-	private int[] acciones; // 1- obri casella i 3- bandera
+	private int[] acciones; // 1- abrir casilla i 3- colocar bandera
 	private int nAccion;
 	private Robot robotDif;
 	
@@ -38,9 +38,9 @@ public class AutomatizacionJubula {
 				break;
 			case 3: 
 				// ganar partida version 2 con uso de banderas
-				files = new int[] 	 {6,7,7,6,7,6,6,7,4,6,7,7,7,6,6,3,5,5,4,4,3,2,0,1,3,2,1,0,5,1,0,4,2,5,5,3,4,2,0,4,0,0};
-				columnas = new int[] {0,0,6,1,1,3,2,5,7,4,4,3,2,6,5,5,6,5,6,5,7,7,6,4,6,6,6,5,3,5,4,2,5,4,2,4,3,4,0,4,2,1};
-				acciones = new int[] {1, 1, 3, 3, 1, 1, 1, 1, 3, 3, 1, 1, 1, 1, 1, 3, 1, 1, 1, 1, 1, 3, 1, 3, 1, 1, 1, 1, 1, 1, 3, 3, 1, 1, 1, 1, 1, 1, 3, 1, 1, 1};
+				files = new int[] 	 {6,7,7,6,7,6,6,7,4,6,7,7,7,6,6,3,5,5,4,4,3,2,0,1,3,2,1,0,5,1,0,4,2,5,5,3,4,2,0,4,0};
+				columnas = new int[] {0,0,6,1,1,3,2,5,7,4,4,3,2,6,5,5,6,5,6,5,7,7,6,4,6,6,6,5,3,5,4,2,5,4,2,4,3,4,0,4,2};
+				acciones = new int[] {1, 1, 3, 3, 1, 1, 1, 1, 3, 3, 1, 1, 1, 1, 1, 3, 1, 1, 1, 1, 1, 3, 1, 3, 1, 1, 1, 1, 1, 1, 3, 3, 1, 1, 1, 1, 1, 1, 3, 1, 1};
 				break;
 			case 4:
 				// perder partida version 2 con uso de banderas
@@ -79,5 +79,18 @@ public class AutomatizacionJubula {
 	
 	public void simulaSeleccionDificultad() {
 		robotDif.keyPress(KeyEvent.VK_SPACE);
+	}
+	
+	// getters necesarios para poder realizar comprobaciones en los test case
+	public int getFila(int numAccion) {
+		return files[numAccion];
+	}
+	
+	public int getColumna(int numAccion) {
+		return columnas[numAccion];
+	}
+	
+	public int getAccio(int numAccion) {
+		return acciones[numAccion];
 	}
 }

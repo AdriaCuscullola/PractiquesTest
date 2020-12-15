@@ -22,6 +22,16 @@ public class Game implements GameInterface {
 	private static final int[] COLS_NUM = {10, 18, 24};
 	private static final int[] BOMBS_NUM = {10, 40, 99};
 	
+	// noRest + setNoReset(): necesarios para la automatización, debido a que si reseteamos 
+	// partida  no podemos comprovar el estado final del tablero actual
+	private boolean noReset = false;
+	
+	public void setNoReset() {
+		noReset = !noReset;
+	}
+	
+	// g + setRandom() : necesarios para introducir el mock object y poder realizar 
+	// las distintas estrategias de test
 	private GeneradorRandom g;
 	
 	public void setRandom(GeneradorRandom i) {
@@ -65,13 +75,17 @@ public class Game implements GameInterface {
 		boolean finished = false;
 		if(aux == SquareStatus.BOMB) {
 			view.printaTauler(board.getBoard());
-			view.finish(false);
+			if(!noReset) {
+				view.finish(false);
+			}
 			finished = true;
 		}
 		else {
 			if (0 == board.getPendingSquares()) {
 				view.printaTauler(board.getBoard());
-				view.finish(true);
+				if(!noReset) {
+					view.finish(true);
+				}
 				finished = true;
 			}
 		}

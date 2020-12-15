@@ -1,6 +1,7 @@
 package core;
 
 import java.util.Random;
+
 import controller.GeneradorRandom;
 
 public class BoardR implements Board{
